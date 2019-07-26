@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Alignment,
@@ -10,17 +10,33 @@ import {
     InputGroup
 } from "@blueprintjs/core";
 import Summary from './Summary';
+import api from '../services/api';
 
 function App() {
+    const [userName, setUserName] = useState("");
     const clearButton = (
-        <Tooltip content="Clear">
-            <Button
-                icon="cross"
-                intent={Intent.PRIMARY}
-                minimal={true}
-                //onClick={this.handleLockClick}
-            />
-        </Tooltip>
+        <span>
+            <Tooltip content="Search">
+                <Button
+                    icon="search"
+                    intent={Intent.PRIMARY}
+                    minimal={true}
+                    onClick={() => {
+                        api.getUser(userName)
+                            .then(result => console.log(result))
+                            .catch(error => console.error(error));
+                    }}
+                />
+            </Tooltip>
+            <Tooltip content="Clear">
+                <Button
+                    icon="cross"
+                    intent={Intent.WARNING}
+                    minimal={true}
+                    onClick={() => setUserName("")}
+                />
+            </Tooltip>
+        </span>
     );
     return (
         <div>
@@ -32,6 +48,8 @@ function App() {
                     <InputGroup
                         placeholder="Github user name"
                         rightElement={clearButton}
+                        value={userName}
+                        onChange={(event: { target: any; }) => {setUserName(event.target.value)}}
                     />
                 </Navbar.Group>
                 <Navbar.Group align={Alignment.RIGHT}>
