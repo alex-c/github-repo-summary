@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
 
 body {
   margin: 0;
@@ -6,4 +8,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #EFEFEF;
+}
+
+.viewport {
+  max-width: 960px;
+  margin: auto;
+}
+
+main.viewport {
+  padding-top: 10px;
 }
