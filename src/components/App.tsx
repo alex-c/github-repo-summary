@@ -29,7 +29,19 @@ function App() {
     const handleSearch = () => {
         if (userName !== "") {
             api.getUser(userName)
-                .then(result => dispatch({type: ActionTypeKeys.SET_USER, userName: userName}))
+                .then(result => dispatch({
+                    type: ActionTypeKeys.SET_USER, 
+                    user: {
+                        login: result.login,
+                        name: result.name,
+                        bio: result.bio,
+                        avatarUrl: result.avatar_url,
+                        htmlUrl: result.html_url,
+                        publicRepos: result.public_repos,
+                        followers: result.followers,
+                        following: result.following
+                    }
+                }))
                 .catch(() => {
                     setPopoverVisible(true);
                     setInterval(() => setPopoverVisible(false), 2000);

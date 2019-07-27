@@ -2,10 +2,23 @@ import { ActionTypes } from "./actions/actionTypes";
 import { ActionTypeKeys } from "./actions/actionTypeKeys";
 import { AppState } from "./models/AppState";
 
-export default function reducer(state:AppState = {userName: ""}, action:ActionTypes) {
+const initialState = {
+    user: {
+        login: "",
+        name: "",
+        bio: "",
+        avatarUrl: "",
+        htmlUrl: "",
+        public_repos: 0,
+        followers: 0,
+        following: 0
+    }
+};
+
+export default function reducer(state:AppState = initialState, action:ActionTypes) {
     switch (action.type) {
         case ActionTypeKeys.SET_USER:
-            return {userName: action.userName};
+            return {user: action.user};
         default:
             return state;
     }

@@ -1,8 +1,9 @@
 import { ActionTypeKeys } from "./actionTypeKeys";
+import { User } from "../models/User";
 
 export interface SetUserAction {
     type: ActionTypeKeys.SET_USER;
-    userName: string;
+    user: User;
 }
 
 export interface OtherAction {
