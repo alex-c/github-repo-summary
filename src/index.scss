@@ -19,3 +19,29 @@ body {
 main.viewport {
   padding-top: 10px;
 }
+
+#user-summary {
+  text-align: left;
+  overflow: auto;
+  .bp3-tag {
+    margin-right: 4px;
+  }
+}
+
+#avatar {
+  float: left;
+  img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 16px;
+  }
+}
+
+#default {
+  padding: 64px;
+  svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 12px;
+  }
+}

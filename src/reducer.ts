@@ -7,9 +7,13 @@ const initialState = {
         login: "",
         name: "",
         bio: "",
+        location: "",
+        company: "",
+        blog: "",
         avatarUrl: "",
         htmlUrl: "",
-        public_repos: 0,
+        publicRepos: 0,
+        publicGists: 0,
         followers: 0,
         following: 0
     }

@@ -35,9 +35,13 @@ function App() {
                         login: result.login,
                         name: result.name,
                         bio: result.bio,
+                        location: result.location,
+                        company: result.company,
+                        blog: result.blog,
                         avatarUrl: result.avatar_url,
                         htmlUrl: result.html_url,
                         publicRepos: result.public_repos,
+                        publicGists: result.public_gists,
                         followers: result.followers,
                         following: result.following
                     }

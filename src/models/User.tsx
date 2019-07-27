@@ -2,9 +2,13 @@ export type User = {
     login: string,
     name: string,
     bio: string,
+    location: string,
+    company: string,
+    blog: string,
     avatarUrl: string,
     htmlUrl: string,
-    public_repos: number,
+    publicRepos: number,
+    publicGists: number,
     followers: number,
     following: number
 }

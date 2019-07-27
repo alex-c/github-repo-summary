@@ -8,7 +8,7 @@ function Summary() {
     const user:User = useSelector((state:AppState) => state.user)
     return (
         <main className="viewport">
-            <UserSummary userName={user.name}></UserSummary>
+            <UserSummary user={user}></UserSummary>
         </main>
     );
 }
