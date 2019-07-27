@@ -15,7 +15,8 @@ const initialState = {
         publicRepos: 0,
         publicGists: 0,
         followers: 0,
-        following: 0
+        following: 0,
+        reposUrl: ""
     }
 };
 

@@ -11,7 +11,6 @@ import { IconNames } from '@blueprintjs/icons';
 
 function UserSummary(props: any) {
     let user:User = props.user;
-    console.log(user);
     return (
         <div>
             {user.login !== "" ?

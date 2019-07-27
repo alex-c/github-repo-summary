@@ -29,24 +29,40 @@ function App() {
     const handleSearch = () => {
         if (userName !== "") {
             api.getUser(userName)
-                .then(result => dispatch({
-                    type: ActionTypeKeys.SET_USER, 
-                    user: {
-                        login: result.login,
-                        name: result.name,
-                        bio: result.bio,
-                        location: result.location,
-                        company: result.company,
-                        blog: result.blog,
-                        avatarUrl: result.avatar_url,
-                        htmlUrl: result.html_url,
-                        publicRepos: result.public_repos,
-                        publicGists: result.public_gists,
-                        followers: result.followers,
-                        following: result.following
+                .then(result => {
+                    dispatch({
+                        type: ActionTypeKeys.SET_USER, 
+                        user: {
+                            login: result.login,
+                            name: result.name,
+                            bio: result.bio,
+                            location: result.location,
+                            company: result.company,
+                            blog: result.blog,
+                            avatarUrl: result.avatar_url,
+                            htmlUrl: result.html_url,
+                            publicRepos: result.public_repos,
+                            publicGists: result.public_gists,
+                            followers: result.followers,
+                            following: result.following,
+                            reposUrl: result.repos_url
+                        }
+                    });
+                    let numberOfRepos = result.public_repos;
+                    let page = 1;
+                    let repos:object[] = [];
+                    while (numberOfRepos > 0) {
+                        api.getUserRepositories(result.repos_url, page)
+                            .then(result => {
+                                repos.push(...result);
+                                console.log(repos);
+                            }).catch(error => {
+                                alert("Error:" + error);
+                            });
+                            numberOfRepos -= 100;
+                            page++;
                     }
-                }))
-                .catch(() => {
+                }).catch(() => {
                     setPopoverVisible(true);
                     setInterval(() => setPopoverVisible(false), 2000);
                 });

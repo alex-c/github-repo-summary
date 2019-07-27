@@ -10,5 +10,6 @@ export type User = {
     publicRepos: number,
     publicGists: number,
     followers: number,
-    following: number
+    following: number,
+    reposUrl: string
 }
