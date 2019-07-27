@@ -63,7 +63,10 @@ function App() {
                         for (let value of values) {
                             repositories.push(...value.data);
                         }
-                        console.log(repositories);
+                        dispatch({
+                            type: ActionTypeKeys.SET_REPOSITORIES,
+                            repositories: repositories
+                        });
                     });
                 }).catch(() => {
                     setPopoverVisible(true);

@@ -29,6 +29,11 @@ export default function reducer(state:AppState = initialState, action:ActionType
                 ...state,
                 user: action.user
             };
+        case ActionTypeKeys.SET_REPOSITORIES:
+            return {
+                ...state,
+                repositories: action.repositories
+            };
         default:
             return state;
     }

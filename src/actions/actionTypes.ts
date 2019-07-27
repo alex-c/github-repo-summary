@@ -1,5 +1,6 @@
-import { SetUserAction, OtherAction } from "./actions";
+import { SetUserAction, OtherAction, SetRepositoriesAction } from "./actions";
 
 export type ActionTypes =
 | SetUserAction
+| SetRepositoriesAction
 | OtherAction;
