@@ -5,6 +5,7 @@ export type User = {
     location: string,
     company: string,
     blog: string,
+    email: string,
     avatarUrl: string,
     htmlUrl: string,
     publicRepos: number,

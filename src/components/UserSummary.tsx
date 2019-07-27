@@ -21,6 +21,7 @@ function UserSummary(props: any) {
                     <p>
                         {user.location != null ? (<span><Icon icon={IconNames.MAP_MARKER}></Icon> {user.location} </span>) : ""}
                         {user.company != null ? (<span><Icon icon={IconNames.OFFICE}></Icon> {user.company} </span>) : ""}
+                        {user.email != null ? <span><Icon icon={IconNames.ENVELOPE}></Icon> {user.email}</span> : ""}
                         {user.blog !== "" ? (<span><Icon icon={IconNames.LINK}></Icon> <a href={user.blog} target="_blank" rel="noopener noreferrer">{user.blog}</a></span>) : ""}
                     </p>
                     <div>

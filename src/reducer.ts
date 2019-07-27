@@ -10,6 +10,7 @@ const initialState = {
         location: "",
         company: "",
         blog: "",
+        email: "",
         avatarUrl: "",
         htmlUrl: "",
         publicRepos: 0,

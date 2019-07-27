@@ -39,6 +39,7 @@ function App() {
                             location: result.location,
                             company: result.company,
                             blog: result.blog,
+                            email: result.email,
                             avatarUrl: result.avatar_url,
                             htmlUrl: result.html_url,
                             publicRepos: result.public_repos,
