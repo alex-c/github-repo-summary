@@ -18,10 +18,10 @@ body {
 
 main.viewport .bp3-card {
   margin-top: 16px;
+  text-align: left;
 }
 
 #user-summary {
-  text-align: left;
   overflow: auto;
   .bp3-tag {
     margin-right: 4px;
@@ -44,4 +44,15 @@ main.viewport .bp3-card {
     height: 64px;
     margin-bottom: 12px;
   }
+}
+
+#repository-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.repository {
+    flex-grow: 1;
+    margin: 8px;
 }

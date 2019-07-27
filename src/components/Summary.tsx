@@ -4,6 +4,7 @@ import { AppState } from '../models/AppState';
 import UserSummary from './UserSummary';
 import { User } from '../models/User';
 import RepositoriesSummary from './RepositoriesSummary';
+import RepositoryList from './RepositoryList';
 
 function Summary() {
     const user:User = useSelector((state:AppState) => state.user, shallowEqual);
@@ -12,6 +13,7 @@ function Summary() {
         <main className="viewport">
             <UserSummary user={user}></UserSummary>
             <RepositoriesSummary repositories={repositories}></RepositoriesSummary>
+            <RepositoryList repositories={repositories}></RepositoryList>
         </main>
     );
 }
