@@ -19,6 +19,7 @@ import api from '../services/api';
 import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
 import { ActionTypeKeys } from '../actions/actionTypeKeys';
+import { Repository } from '../models/Repository';
 
 function App() {
     const dispatch = useDispatch()
@@ -51,18 +52,19 @@ function App() {
                     });
                     let numberOfRepos = result.public_repos;
                     let page = 1;
-                    let repos:object[] = [];
+                    let promises:object[] = [];
                     while (numberOfRepos > 0) {
-                        api.getUserRepositories(result.repos_url, page)
-                            .then(result => {
-                                repos.push(...result);
-                                console.log(repos);
-                            }).catch(error => {
-                                alert("Error:" + error);
-                            });
-                            numberOfRepos -= 100;
-                            page++;
+                        promises.push(api.getUserRepositories(result.repos_url, page));
+                        numberOfRepos -= 100;
+                        page++;
                     }
+                    Promise.all(promises).then((values:any[]) => {
+                        let repositories:Repository[] = [];
+                        for (let value of values) {
+                            repositories.push(...value.data);
+                        }
+                        console.log(repositories);
+                    });
                 }).catch(() => {
                     setPopoverVisible(true);
                     setInterval(() => setPopoverVisible(false), 2000);
@@ -112,6 +114,7 @@ function App() {
                         </Popover>
                     </Navbar.Group>
                     <Navbar.Group align={Alignment.RIGHT}>
+                        <Navbar.Divider />
                         <AnchorButton icon="git-branch" text="Github" href="https://github.com/alex-c/github-repo-summary" target="_blank" />
                     </Navbar.Group>
                 </div>
