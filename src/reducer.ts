@@ -17,13 +17,17 @@ const initialState = {
         followers: 0,
         following: 0,
         reposUrl: ""
-    }
+    },
+    repositories: []
 };
 
 export default function reducer(state:AppState = initialState, action:ActionTypes) {
     switch (action.type) {
         case ActionTypeKeys.SET_USER:
-            return {user: action.user};
+            return {
+                ...state,
+                user: action.user
+            };
         default:
             return state;
     }

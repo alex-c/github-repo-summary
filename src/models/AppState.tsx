@@ -1,5 +1,7 @@
 import { User } from "./User";
+import { Repository } from "./Repository";
 
 export type AppState = {
-    user: User
+    user: User,
+    repositories: Repository[]
 }
