@@ -3,7 +3,7 @@ import {
     Card,
     Elevation,
     Icon,
-    Colors,
+    NonIdealState,
     Tag
 } from "@blueprintjs/core";
 import { User } from '../models/User';
@@ -32,12 +32,11 @@ function UserSummary(props: any) {
                     </div>
                 </Card>
             :
-                <div id="default">
-                    <div>
-                        <Icon icon={IconNames.DISABLE} color={Colors.GRAY2}></Icon>
-                        <p>Enter a Github user name in the search bar above!</p>
-                    </div>
-                </div>
+                <NonIdealState
+                    icon={IconNames.DISABLE}
+                    title="No user selected."
+                    description="Enter a Github user name in the search bar above!"
+            />
             }
         </div>
     );
