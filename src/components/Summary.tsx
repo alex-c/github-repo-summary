@@ -17,8 +17,18 @@ function Summary() {
       {user.login !== '' ? (
         <div>
           <UserSummary user={user} />
-          <RepositoriesSummary languageStatistics={languageStatistics} />
-          <RepositoryList repositories={repositories} />
+          {repositories.length !== 0 ? (
+            <div>
+              <RepositoriesSummary languageStatistics={languageStatistics} />
+              <RepositoryList repositories={repositories} />
+            </div>
+          ) : (
+            <NonIdealState
+              icon={IconNames.DISABLE}
+              title="No repositories."
+              description="The user has no public repositories."
+            />
+          )}
         </div>
       ) : (
         <NonIdealState
