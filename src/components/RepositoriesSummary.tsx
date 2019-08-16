@@ -1,7 +1,8 @@
 import React from 'react';
 import { RadialChart, DiscreteColorLegend } from 'react-vis';
-import { Card, Elevation } from '@blueprintjs/core';
+import { Card, Elevation, NonIdealState } from '@blueprintjs/core';
 import { Repository } from '../models/Repository';
+import { IconNames } from '@blueprintjs/icons';
 
 function RepositoriesSummary(props: any) {
   let repositories: Repository[] = props.repositories;
@@ -27,7 +28,11 @@ function RepositoriesSummary(props: any) {
           <DiscreteColorLegend orientation="horizontal" width={900} items={colors} />
         </Card>
       ) : (
-        <span />
+        <NonIdealState
+          icon={IconNames.DISABLE}
+          title="No repositories."
+          description="The user has no public repositories."
+        />
       )}
     </div>
   );
