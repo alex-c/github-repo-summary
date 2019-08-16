@@ -31,24 +31,30 @@ main.viewport .bp3-card {
 
 #user-summary {
   overflow: auto;
+  #avatar {
+    float: left;
+    img {
+      max-width: 100px;
+      max-height: 100px;
+      margin-right: 16px;
+    }
+  }
   .bp3-tag {
     margin-right: 4px;
   }
 }
 
-#avatar {
-  float: left;
-  img {
-    max-width: 100px;
-    max-height: 100px;
-    margin-right: 16px;
-  }
-}
 
-#repository-list > div {
+
+#repository-list {
+  #repository-list-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  #repository-list-controls {
+    float: right;
+  }
 }
 
 .repository {
