@@ -20,6 +20,7 @@ import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
 import { ActionTypeKeys } from '../actions/actionTypeKeys';
 import { Repository } from '../models/Repository';
+import { Language } from '../models/Language';
 
 function App() {
   const dispatch = useDispatch();
@@ -75,7 +76,35 @@ function App() {
   };
 
   const processLoadedRepos = (repositories: Repository[]) => {
-    console.log(repositories); // TODO: calculate state, and push them to store
+    const languages: Language[] = [];
+
+    // Find unique languages and count the number of repos for each
+    for (let repository of repositories) {
+      const language = languages.find(language => language.name === repository.language);
+      if (language === undefined) {
+        languages.push({
+          name: repository.language,
+          count: 1,
+        });
+      } else {
+        language.count++;
+      }
+    }
+
+    // Handle the `null` language
+    const unknownLanguage = languages.find(language => language.name === null);
+    if (unknownLanguage !== undefined) {
+      unknownLanguage.name = 'Unknown';
+    }
+
+    // Sort by most used language
+    languages.sort((language1, language2) => language2.count - language1.count);
+
+    // Dispatch full repo list and language stats
+    dispatch({
+      type: ActionTypeKeys.SET_LANGUAGE_STATISTICS,
+      statistics: { languages, language_count: languages.length, repository_count: repositories.length },
+    });
     dispatch({
       type: ActionTypeKeys.SET_REPOSITORIES,
       repositories: repositories,

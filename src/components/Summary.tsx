@@ -11,12 +11,13 @@ import { IconNames } from '@blueprintjs/icons';
 function Summary() {
   const user: User = useSelector((state: AppState) => state.user, shallowEqual);
   const repositories = useSelector((state: AppState) => state.repositories);
+  const languageStatistics = useSelector((state: AppState) => state.language_statistics);
   return (
     <main className="viewport">
       {user.login !== '' ? (
         <div>
           <UserSummary user={user} />
-          <RepositoriesSummary repositories={repositories} />
+          <RepositoriesSummary languageStatistics={languageStatistics} />
           <RepositoryList repositories={repositories} />
         </div>
       ) : (

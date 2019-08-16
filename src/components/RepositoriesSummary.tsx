@@ -1,31 +1,32 @@
 import React from 'react';
 import { RadialChart, DiscreteColorLegend } from 'react-vis';
 import { Card, Elevation, NonIdealState } from '@blueprintjs/core';
-import { Repository } from '../models/Repository';
 import { IconNames } from '@blueprintjs/icons';
+import { LanguageStatistics } from '../models/LanguageStatistics';
 
 function RepositoriesSummary(props: any) {
-  let repositories: Repository[] = props.repositories;
-  console.log(repositories);
-  const colors = [{ title: 'Dart' }, { title: 'C#' }, { title: 'Java' }, { title: 'JavaScript' }];
+  let languageStatistics: LanguageStatistics = props.languageStatistics;
   return (
     <div>
-      {repositories.length > 0 ? (
+      {languageStatistics !== null ? (
         <Card id="repositories-summary" elevation={Elevation.TWO}>
-          Repositories: {repositories.length}
           <RadialChart
-            data={[
-              { angle: 1, label: 'JavaScript' },
-              { angle: 2, label: 'Java' },
-              { angle: 3, label: 'C#' },
-              { angle: 5, label: 'Dart' },
-            ]}
+            data={languageStatistics.languages
+              .map(language => {
+                return { angle: language.count, label: language.name };
+              })
+              .reverse()}
             showLabels={true}
             colorDomain={[0, 1, 2]}
             width={300}
             height={300}
           />
-          <DiscreteColorLegend orientation="horizontal" width={900} items={colors} />
+          <DiscreteColorLegend
+            orientation="horizontal"
+            items={languageStatistics.languages.map(language => {
+              return { title: `${language.name}: ${language.count}` };
+            })}
+          />
         </Card>
       ) : (
         <NonIdealState

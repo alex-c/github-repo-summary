@@ -20,6 +20,7 @@ const initialState = {
     reposUrl: '',
   },
   repositories: [],
+  language_statistics: null,
 };
 
 export default function reducer(state: AppState = initialState, action: ActionTypes) {
@@ -33,6 +34,11 @@ export default function reducer(state: AppState = initialState, action: ActionTy
       return {
         ...state,
         repositories: action.repositories,
+      };
+    case ActionTypeKeys.SET_LANGUAGE_STATISTICS:
+      return {
+        ...state,
+        language_statistics: action.statistics,
       };
     default:
       return state;
