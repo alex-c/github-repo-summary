@@ -1,3 +1,3 @@
 export type RepositoryStats = {
-    name: string
-}
+  name: string,
+};

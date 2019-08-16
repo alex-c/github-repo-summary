@@ -7,15 +7,15 @@ import RepositoriesSummary from './RepositoriesSummary';
 import RepositoryList from './RepositoryList';
 
 function Summary() {
-    const user:User = useSelector((state:AppState) => state.user, shallowEqual);
-    const repositories = useSelector((state:AppState) => state.repositories);
-    return (
-        <main className="viewport">
-            <UserSummary user={user}></UserSummary>
-            <RepositoriesSummary repositories={repositories}></RepositoriesSummary>
-            <RepositoryList repositories={repositories}></RepositoryList>
-        </main>
-    );
+  const user: User = useSelector((state: AppState) => state.user, shallowEqual);
+  const repositories = useSelector((state: AppState) => state.repositories);
+  return (
+    <main className="viewport">
+      <UserSummary user={user} />
+      <RepositoriesSummary repositories={repositories} />
+      <RepositoryList repositories={repositories} />
+    </main>
+  );
 }
 
 export default Summary;
