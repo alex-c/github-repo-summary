@@ -23,6 +23,7 @@ main.viewport .bp3-card {
 
 .flex-card-section {
   display: flex;
+  flex-wrap: wrap;
   padding: 12px;
   div {
     flex-grow: 1;
