@@ -38,9 +38,6 @@ jspm_packages/
 /.pnp
 .pnp.js
 
-# TypeScript v1 declaration files
-typings/
-
 # Optional npm cache directory
 .npm
 
