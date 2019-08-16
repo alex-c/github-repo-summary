@@ -1,10 +1,10 @@
 # github-repo-summary
 
-Provides a neat overview of a Github user's repositories.
+Provides a neat overview of a Github user's repositories. Check it out [here](https://alex-c.github.io/github-repo-summary/)!
 
 ## Install
 
-Install with `npm install`.
+Requires [Node.js](https://nodejs.org/en/). Clone or download the repository, navigate to the repository's main directory, and install with `npm install`. Run it with `npm start` after successful installation - the page will be hosted at `localhost:3000`.
 
 ## Scripts
 
