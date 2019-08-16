@@ -1,5 +1,6 @@
 export type Repository = {
   name: string,
+  fork: boolean,
   language: string,
   description: string,
   stargazers_count: number,

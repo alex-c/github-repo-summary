@@ -8,7 +8,7 @@ function RepositoryView(props: any) {
   return (
     <div className="repository">
       <div className="repository-header">
-        <Icon icon={IconNames.GIT_REPO} />
+        <Icon icon={repository.fork ? IconNames.GIT_BRANCH : IconNames.GIT_REPO} />
         <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
           {repository.name}
         </a>
