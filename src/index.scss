@@ -29,6 +29,10 @@ main.viewport .bp3-card {
   }
 }
 
+.rv-xy-plot__series--label-text {
+  text-shadow: 1px 1px 3px white;
+}
+
 #user-summary {
   overflow: auto;
   #avatar {
@@ -43,8 +47,6 @@ main.viewport .bp3-card {
     margin-right: 4px;
   }
 }
-
-
 
 #repository-list {
   #repository-list-content {
