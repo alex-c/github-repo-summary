@@ -100,23 +100,23 @@ function App() {
         <div>
             <Navbar>
                 <div className="viewport">
-                    <Navbar.Group align={Alignment.LEFT}>
+                    <Navbar.Group align={Alignment.LEFT} >
                         <Navbar.Heading>Github Repo Summary</Navbar.Heading>
-                        <Navbar.Divider />
+                    </Navbar.Group>
+                    <Navbar.Group align={Alignment.RIGHT}>
                         <Popover position={PopoverPosition.BOTTOM} isOpen={popoverVisible}>
                             <InputGroup
                                 placeholder="Github user name"
                                 rightElement={inputButtons}
                                 value={userName}
-                                onChange={(event: { target: any; }) => {setUserName(event.target.value)}}
+                                onChange={(event: { target: any; }) => setUserName(event.target.value)}
+                                onKeyPress={event => {if (event.charCode === 13) {handleSearch()}}}
                             />
                             <Card>
                                 <Icon icon={IconNames.ERROR} intent={Intent.DANGER} style={{float: "left"}}></Icon>
                                 <p>User <span style={{color: Colors.RED1}}>{userName}</span> could not be found!</p>
                             </Card>
                         </Popover>
-                    </Navbar.Group>
-                    <Navbar.Group align={Alignment.RIGHT}>
                         <Navbar.Divider />
                         <AnchorButton icon="git-branch" text="Github" href="https://github.com/alex-c/github-repo-summary" target="_blank" />
                     </Navbar.Group>
