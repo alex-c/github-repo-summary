@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.72457038.chunk.css",
-    "main.js": "/static/js/main.bdac6b60.chunk.js",
-    "main.js.map": "/static/js/main.bdac6b60.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/css/2.14852a02.chunk.css": "/static/css/2.14852a02.chunk.css",
-    "static/js/2.2574342b.chunk.js": "/static/js/2.2574342b.chunk.js",
-    "static/js/2.2574342b.chunk.js.map": "/static/js/2.2574342b.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.829208568bb4e7477742a636a9f67bfa.js": "/precache-manifest.829208568bb4e7477742a636a9f67bfa.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.14852a02.chunk.css.map": "/static/css/2.14852a02.chunk.css.map",
-    "static/css/main.72457038.chunk.css.map": "/static/css/main.72457038.chunk.css.map"
+    "main.css": "/github-repo-summary/static/css/main.72457038.chunk.css",
+    "main.js": "/github-repo-summary/static/js/main.bdac6b60.chunk.js",
+    "main.js.map": "/github-repo-summary/static/js/main.bdac6b60.chunk.js.map",
+    "runtime~main.js": "/github-repo-summary/static/js/runtime~main.c387be30.js",
+    "runtime~main.js.map": "/github-repo-summary/static/js/runtime~main.c387be30.js.map",
+    "static/css/2.14852a02.chunk.css": "/github-repo-summary/static/css/2.14852a02.chunk.css",
+    "static/js/2.697f8130.chunk.js": "/github-repo-summary/static/js/2.697f8130.chunk.js",
+    "static/js/2.697f8130.chunk.js.map": "/github-repo-summary/static/js/2.697f8130.chunk.js.map",
+    "index.html": "/github-repo-summary/index.html",
+    "precache-manifest.4a51297051d154be10e69090c24141de.js": "/github-repo-summary/precache-manifest.4a51297051d154be10e69090c24141de.js",
+    "service-worker.js": "/github-repo-summary/service-worker.js",
+    "static/css/2.14852a02.chunk.css.map": "/github-repo-summary/static/css/2.14852a02.chunk.css.map",
+    "static/css/main.72457038.chunk.css.map": "/github-repo-summary/static/css/main.72457038.chunk.css.map"
   }
 }
