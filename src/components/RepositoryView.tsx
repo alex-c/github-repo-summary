@@ -1,21 +1,37 @@
 import React from 'react';
 import { Repository } from '../models/Repository';
-import { Callout, Tag, Intent } from '@blueprintjs/core';
+import { Icon } from '@blueprintjs/core';
+import { IconNames } from '@blueprintjs/icons';
 
 function RepositoryView(props: any) {
   const repository: Repository = props.repository;
   return (
     <div className="repository">
-      <Callout>
-        {repository.language !== null ? <Tag intent={Intent.PRIMARY}>{repository.language}</Tag> : ''}
-        <span>
-          <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
-            {repository.name}
-          </a>{' '}
-        </span>
-        <span>Stars: {repository.stargazers_count} </span>
-        <span>Watchers: {repository.watchers_count} </span>
-      </Callout>
+      <div className="repository-header">
+        <Icon icon={IconNames.GIT_REPO} />
+        <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
+          {repository.name}
+        </a>
+        {repository.language !== null ? (
+          <div className="repository-tag">
+            <Icon icon={IconNames.CODE} />
+            {repository.language}
+          </div>
+        ) : (
+          ''
+        )}
+      </div>
+      <div>
+        <i>{repository.description}</i>
+      </div>
+      <div className="repository-footer">
+        <Icon icon={IconNames.STAR} />
+        {repository.stargazers_count}
+        <Icon icon={IconNames.EYE_OPEN} />
+        {repository.watchers_count}
+        <Icon icon={IconNames.GIT_BRANCH} />
+        {repository.forks}
+      </div>
     </div>
   );
 }

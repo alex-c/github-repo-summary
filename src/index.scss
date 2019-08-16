@@ -21,6 +21,14 @@ main.viewport .bp3-card {
   text-align: left;
 }
 
+.flex-card-section {
+  display: flex;
+  padding: 12px;
+  div {
+    flex-grow: 1;
+  }
+}
+
 #user-summary {
   overflow: auto;
   .bp3-tag {
@@ -37,14 +45,6 @@ main.viewport .bp3-card {
   }
 }
 
-.flex-card-section {
-  display: flex;
-  padding: 12px;
-  div {
-    flex-grow: 1;
-  }
-}
-
 #repository-list > div {
     display: flex;
     flex-wrap: wrap;
@@ -54,4 +54,34 @@ main.viewport .bp3-card {
 .repository {
     flex-grow: 1;
     margin: 8px;
+    background-color: #B3CFFF;
+    border-radius: 3px;
+    & > div {
+      padding: 8px;
+    }
+    .repository-header {
+      color: white;
+      background-color: #4B6AB2;
+      border-radius: 3px 2px 0px 0px;
+      a:link {
+        color: white;
+      }
+      .bp3-icon {
+        margin-right: 8px;
+      }
+    }
+    .repository-tag {
+      float: right;
+      padding: 0px 4px;
+      margin-left: 8px;
+      color: #1F4B99;
+      background-color: white;
+      border-radius: 2px;
+    }
+    .repository-footer {
+      .bp3-icon {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+    }
 }

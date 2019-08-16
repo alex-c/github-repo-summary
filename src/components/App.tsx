@@ -151,7 +151,7 @@ function App() {
             </Popover>
             <Navbar.Divider />
             <AnchorButton
-              icon="git-branch"
+              icon="git-repo"
               text="Github"
               href="https://github.com/alex-c/github-repo-summary"
               target="_blank"
