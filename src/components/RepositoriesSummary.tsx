@@ -1,29 +1,36 @@
 import React from 'react';
 import { RadialChart, DiscreteColorLegend } from 'react-vis';
-import { Card, Elevation } from '@blueprintjs/core';
+import { Card, Elevation, Callout, Intent } from '@blueprintjs/core';
 import { LanguageStatistics } from '../models/LanguageStatistics';
+import { IconNames } from '@blueprintjs/icons';
 
 function RepositoriesSummary(props: any) {
   let languageStatistics: LanguageStatistics = props.languageStatistics;
   return (
     <Card id="repositories-summary" elevation={Elevation.TWO}>
-      <RadialChart
-        data={languageStatistics.languages
-          .map(language => {
-            return { angle: language.count, label: language.name };
-          })
-          .reverse()}
-        showLabels={true}
-        colorDomain={[0, 1, 2]}
-        width={300}
-        height={300}
-      />
-      <DiscreteColorLegend
-        orientation="horizontal"
-        items={languageStatistics.languages.map(language => {
-          return { title: `${language.name}: ${language.count}` };
-        })}
-      />
+      <Callout intent={Intent.PRIMARY} icon={IconNames.PIE_CHART}>
+        {languageStatistics.language_count} languages used over {languageStatistics.repository_count} repositories.
+      </Callout>
+      <div className="flex-card-section">
+        <RadialChart
+          data={languageStatistics.languages
+            .map(language => {
+              return { angle: language.count, label: language.name };
+            })
+            .reverse()}
+          showLabels={true}
+          colorDomain={[0, 1, 2]}
+          width={300}
+          height={300}
+        />
+        <DiscreteColorLegend
+          orientation="horizontal"
+          items={languageStatistics.languages.map(language => {
+            return { title: `${language.name}: ${language.count}` };
+          })}
+          width={300}
+        />
+      </div>
     </Card>
   );
 }
