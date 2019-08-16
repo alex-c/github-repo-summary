@@ -63,16 +63,21 @@ function App() {
                         for (let value of values) {
                             repositories.push(...value.data);
                         }
-                        dispatch({
-                            type: ActionTypeKeys.SET_REPOSITORIES,
-                            repositories: repositories
-                        });
+                        processLoadedRepos(repositories);
                     });
                 }).catch(() => {
                     setPopoverVisible(true);
                     setInterval(() => setPopoverVisible(false), 2000);
                 });
         }
+    }
+
+    const processLoadedRepos = (repositories:Repository[]) => {
+        console.log(repositories); // TODO: calculate state, and push them to store
+        dispatch({
+            type: ActionTypeKeys.SET_REPOSITORIES,
+            repositories: repositories
+        });
     }
 
     const inputButtons = (
