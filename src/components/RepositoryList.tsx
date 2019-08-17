@@ -14,7 +14,7 @@ function RepositoryList(props: RepositoryListProps) {
   const [viewMode, setViewMode] = useState('tiles');
 
   const toggleViewMode = () => {
-    viewMode === 'tiles' ? setViewMode('table') : setViewMode('tiles');
+    setViewMode(viewMode === 'tiles' ? 'table' : 'tiles');
   };
 
   return (
