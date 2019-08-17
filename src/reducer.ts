@@ -21,6 +21,7 @@ const initialState = {
   },
   repositories: [],
   language_statistics: null,
+  stars_statistics: null,
 };
 
 export default function reducer(state: AppState = initialState, action: ActionTypes) {
