@@ -2,6 +2,7 @@ import { ActionTypeKeys } from './actionTypeKeys';
 import { User } from '../models/User';
 import { Repository } from '../models/Repository';
 import { LanguageStatistics } from '../models/LanguageStatistics';
+import { StarsStatistics } from '../models/StarsStatistics';
 
 export interface SetUserAction {
   type: ActionTypeKeys.SET_USER;
@@ -13,9 +14,10 @@ export interface SetRepositoriesAction {
   repositories: Repository[];
 }
 
-export interface SetLanguageStatisticsAction {
-  type: ActionTypeKeys.SET_LANGUAGE_STATISTICS;
-  statistics: LanguageStatistics;
+export interface SetStatisticsAction {
+  type: ActionTypeKeys.SET_STATISTICS;
+  languageStatistics: LanguageStatistics;
+  starsStatistics: StarsStatistics;
 }
 
 export interface SortRepositoriesAction {

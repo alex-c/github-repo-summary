@@ -36,10 +36,11 @@ export default function reducer(state: AppState = initialState, action: ActionTy
         ...state,
         repositories: action.repositories,
       };
-    case ActionTypeKeys.SET_LANGUAGE_STATISTICS:
+    case ActionTypeKeys.SET_STATISTICS:
       return {
         ...state,
-        language_statistics: action.statistics,
+        language_statistics: action.languageStatistics,
+        stars_statistics: action.starsStatistics,
       };
     case ActionTypeKeys.SORT_REPOSITORIES:
       return {

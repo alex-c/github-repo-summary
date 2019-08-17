@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import {
   Alignment,
   Button,
@@ -24,7 +23,6 @@ import { Language } from '../models/Language';
 
 function App() {
   const dispatch = useDispatch();
-
   const [userName, setUserName] = useState('');
   const [popoverVisible, setPopoverVisible] = useState(false);
 
@@ -102,8 +100,8 @@ function App() {
 
     // Dispatch full repo list and language stats
     dispatch({
-      type: ActionTypeKeys.SET_LANGUAGE_STATISTICS,
-      statistics: { languages, language_count: languages.length, repository_count: repositories.length },
+      type: ActionTypeKeys.SET_STATISTICS,
+      languageStatistics: { languages, language_count: languages.length, repository_count: repositories.length },
     });
     dispatch({
       type: ActionTypeKeys.SET_REPOSITORIES,

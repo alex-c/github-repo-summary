@@ -2,13 +2,13 @@ import {
   SetUserAction,
   OtherAction,
   SetRepositoriesAction,
-  SetLanguageStatisticsAction,
+  SetStatisticsAction,
   SortRepositoriesAction,
 } from './actions';
 
 export type ActionTypes =
   | SetUserAction
   | SetRepositoriesAction
-  | SetLanguageStatisticsAction
+  | SetStatisticsAction
   | SortRepositoriesAction
   | OtherAction;
