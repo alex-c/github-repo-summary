@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Elevation, Icon, Tag } from '@blueprintjs/core';
+import { Card, Elevation, Tag } from '@blueprintjs/core';
 import { User } from '../models/User';
 import { IconNames } from '@blueprintjs/icons';
+import IconItem from './IconItem';
 
 function UserSummary(props: any) {
   let user: User = props.user;
@@ -11,44 +12,17 @@ function UserSummary(props: any) {
         <img src={user.avatarUrl} alt="Github user avatar" />
       </div>
       <p>
-        <b>{user.name}</b> /{' '}
+        <b>{user.name}</b> /&nbsp;
         <a href={user.htmlUrl} target="_blank" rel="noopener noreferrer">
           {user.login}
         </a>
       </p>
       <p>{user.bio}</p>
       <p>
-        {user.location != null ? (
-          <span>
-            <Icon icon={IconNames.MAP_MARKER} /> {user.location}{' '}
-          </span>
-        ) : (
-          ''
-        )}
-        {user.company != null ? (
-          <span>
-            <Icon icon={IconNames.OFFICE} /> {user.company}{' '}
-          </span>
-        ) : (
-          ''
-        )}
-        {user.email != null ? (
-          <span>
-            <Icon icon={IconNames.ENVELOPE} /> {user.email}
-          </span>
-        ) : (
-          ''
-        )}
-        {user.blog !== '' ? (
-          <span>
-            <Icon icon={IconNames.LINK} />{' '}
-            <a href={user.blog} target="_blank" rel="noopener noreferrer">
-              {user.blog}
-            </a>
-          </span>
-        ) : (
-          ''
-        )}
+        {user.location && <IconItem icon={IconNames.MAP_MARKER} text={user.location} />}
+        {user.company && <IconItem icon={IconNames.OFFICE} text={user.company} />}
+        {user.email && <IconItem icon={IconNames.ENVELOPE} text={user.email} />}
+        {user.blog !== '' && <IconItem icon={IconNames.LINK} text={user.blog} link={user.blog} />}
       </p>
       <div>
         <Tag icon={IconNames.GIT_BRANCH}>Repositories: {user.publicRepos}</Tag>

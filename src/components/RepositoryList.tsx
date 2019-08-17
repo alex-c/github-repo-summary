@@ -14,8 +14,8 @@ function RepositoryList(props: any) {
   };
 
   return (
-    <div>
-      {repositories.length > 0 ? (
+    <>
+      {repositories.length > 0 && (
         <Card id="repository-list" elevation={Elevation.TWO}>
           <div id="repository-list-header">
             <div id="repository-list-controls">
@@ -62,10 +62,8 @@ function RepositoryList(props: any) {
             )}
           </div>
         </Card>
-      ) : (
-        <span />
       )}
-    </div>
+    </>
   );
 }
 

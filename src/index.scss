@@ -44,6 +44,13 @@ main.viewport .bp3-card {
       margin-right: 16px;
     }
   }
+  .bp3-icon {
+    margin-left: 8px;
+    margin-right: 4px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
   .bp3-tag {
     margin-right: 4px;
   }
@@ -91,7 +98,7 @@ main.viewport .bp3-card {
     .repository-footer {
       .bp3-icon {
         margin-left: 8px;
-        margin-right: 8px;
+        margin-right: 4px;
       }
     }
 }

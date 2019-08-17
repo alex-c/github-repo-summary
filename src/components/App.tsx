@@ -112,18 +112,18 @@ function App() {
   };
 
   const inputButtons = (
-    <span>
+    <>
       <Tooltip content="Search">
         <Button icon="search" intent={Intent.PRIMARY} minimal={true} onClick={handleSearch} />
       </Tooltip>
       <Tooltip content="Clear">
         <Button icon="cross" intent={Intent.WARNING} minimal={true} onClick={() => setUserName('')} />
       </Tooltip>
-    </span>
+    </>
   );
 
   return (
-    <div>
+    <>
       <Navbar>
         <div className="viewport">
           <Navbar.Group align={Alignment.LEFT}>
@@ -160,7 +160,7 @@ function App() {
         </div>
       </Navbar>
       <Summary />
-    </div>
+    </>
   );
 }
 
