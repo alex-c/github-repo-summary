@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Card, Elevation, Button, HTMLTable } from '@blueprintjs/core';
+import { Card, Elevation, Button, HTMLTable, ButtonGroup } from '@blueprintjs/core';
 import { Repository } from '../models/Repository';
 import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
+import { useDispatch } from 'react-redux';
+import { ActionTypeKeys } from '../actions/actionTypeKeys';
 
 interface RepositoryListProps {
   repositories: Repository[];
@@ -10,11 +12,31 @@ interface RepositoryListProps {
 
 function RepositoryList(props: RepositoryListProps) {
   const { repositories } = props;
-
+  const dispatch = useDispatch();
   const [viewMode, setViewMode] = useState('tiles');
+  const [sorting, setSorting] = useState('alphabetical');
 
   const toggleViewMode = () => {
     setViewMode(viewMode === 'tiles' ? 'table' : 'tiles');
+  };
+
+  const toggleSorting = () => {
+    const newSorting = sorting === 'alphabetical' ? 'stars' : 'alphabetical';
+    setSorting(newSorting);
+    dispatch({
+      type: ActionTypeKeys.SORT_REPOSITORIES,
+      repositories: sortRepositories(repositories, newSorting),
+    });
+  };
+
+  const sortRepositories = (repositories: Repository[], sorting: string) => {
+    if (sorting === 'alphabetical') {
+      return repositories.sort((r1, r2) =>
+        r1.name.toLowerCase() < r2.name.toLowerCase() ? -1 : r1.name.toLowerCase() > r2.name.toLowerCase() ? 1 : 0,
+      );
+    } else {
+      return repositories.sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
+    }
   };
 
   return (
@@ -23,11 +45,18 @@ function RepositoryList(props: RepositoryListProps) {
         <Card id="repository-list" elevation={Elevation.TWO}>
           <div id="repository-list-header">
             <div id="repository-list-controls">
-              <Button
-                text={viewMode === 'tiles' ? 'View table' : 'View tiles'}
-                onClick={toggleViewMode}
-                icon={viewMode === 'tiles' ? IconNames.TH : IconNames.GRID_VIEW}
-              />
+              <ButtonGroup>
+                <Button
+                  text={sorting === 'alphabetical' ? 'Sort by stars' : 'Sort alphabetically'}
+                  onClick={toggleSorting}
+                  icon={sorting === 'alphabetical' ? IconNames.SORT_DESC : IconNames.SORT_ALPHABETICAL}
+                />
+                <Button
+                  text={viewMode === 'tiles' ? 'View table' : 'View tiles'}
+                  onClick={toggleViewMode}
+                  icon={viewMode === 'tiles' ? IconNames.TH : IconNames.GRID_VIEW}
+                />
+              </ButtonGroup>
             </div>
             <h2>Repositories</h2>
           </div>

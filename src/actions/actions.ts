@@ -13,9 +13,14 @@ export interface SetRepositoriesAction {
   repositories: Repository[];
 }
 
-export interface SetLanguageStatistics {
+export interface SetLanguageStatisticsAction {
   type: ActionTypeKeys.SET_LANGUAGE_STATISTICS;
   statistics: LanguageStatistics;
+}
+
+export interface SortRepositoriesAction {
+  type: ActionTypeKeys.SORT_REPOSITORIES;
+  repositories: Repository[];
 }
 
 export interface OtherAction {
