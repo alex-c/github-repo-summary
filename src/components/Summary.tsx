@@ -1,15 +1,14 @@
 import React from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { AppState } from '../models/AppState';
 import UserSummary from './UserSummary';
-import { User } from '../models/User';
 import RepositoriesSummary from './RepositoriesSummary';
 import RepositoryList from './RepositoryList';
 import { NonIdealState } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 
 function Summary() {
-  const user: User = useSelector((state: AppState) => state.user, shallowEqual);
+  const user = useSelector((state: AppState) => state.user);
   const repositories = useSelector((state: AppState) => state.repositories);
   const languageStatistics = useSelector((state: AppState) => state.language_statistics);
   return (
