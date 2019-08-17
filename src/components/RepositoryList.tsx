@@ -4,8 +4,12 @@ import { Repository } from '../models/Repository';
 import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
 
-function RepositoryList(props: any) {
-  const repositories: Repository[] = props.repositories;
+interface RepositoryListProps {
+  repositories: Repository[];
+}
+
+function RepositoryList(props: RepositoryListProps) {
+  const { repositories } = props;
 
   const [viewMode, setViewMode] = useState('tiles');
 

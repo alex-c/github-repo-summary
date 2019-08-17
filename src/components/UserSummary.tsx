@@ -4,8 +4,12 @@ import { User } from '../models/User';
 import { IconNames } from '@blueprintjs/icons';
 import IconItem from './IconItem';
 
-function UserSummary(props: any) {
-  let user: User = props.user;
+interface UserSummaryProps {
+  user: User;
+}
+
+function UserSummary(props: UserSummaryProps) {
+  let { user } = props;
   return (
     <Card id="user-summary" elevation={Elevation.TWO}>
       <div id="avatar">

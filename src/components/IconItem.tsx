@@ -1,10 +1,14 @@
 import React from 'react';
 import { Icon, IconName } from '@blueprintjs/core';
 
-function IconItem(props: any) {
-  let icon: IconName = props.icon;
-  let text: string = props.text;
-  let link: string = props.link;
+interface IconItemProps {
+  icon: IconName;
+  text: string | number;
+  link?: string;
+}
+
+function IconItem(props: IconItemProps) {
+  let { icon, text, link } = props;
   return (
     <>
       <Icon icon={icon} />

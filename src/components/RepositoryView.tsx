@@ -3,8 +3,12 @@ import { Repository } from '../models/Repository';
 import { IconNames } from '@blueprintjs/icons';
 import IconItem from './IconItem';
 
-function RepositoryView(props: any) {
-  const repository: Repository = props.repository;
+interface RepositoryView {
+  repository: Repository;
+}
+
+function RepositoryView(props: RepositoryView) {
+  const { repository } = props;
   return (
     <div className="repository">
       <div className="repository-header">

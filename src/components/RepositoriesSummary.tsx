@@ -4,8 +4,12 @@ import { Card, Elevation, Callout, Intent } from '@blueprintjs/core';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { IconNames } from '@blueprintjs/icons';
 
-function RepositoriesSummary(props: any) {
-  let languageStatistics: LanguageStatistics = props.languageStatistics;
+interface RepositoriesSummaryProps {
+  languageStatistics: LanguageStatistics;
+}
+
+function RepositoriesSummary(props: RepositoriesSummaryProps) {
+  let { languageStatistics } = props;
   return (
     <Card id="repositories-summary" elevation={Elevation.TWO}>
       <Callout intent={Intent.PRIMARY} icon={IconNames.PIE_CHART}>
