@@ -3,16 +3,23 @@ import { Card, Elevation, Button, HTMLTable, ButtonGroup } from '@blueprintjs/co
 import { Repository } from '../models/Repository';
 import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
-import { useDispatch } from 'react-redux';
-import { ActionTypeKeys } from '../actions/actionTypeKeys';
 
 interface RepositoryListProps {
   repositories: Repository[];
 }
 
+const sortRepositories = (repositories: Repository[], sorting: string) => {
+  if (sorting === 'alphabetical') {
+    return repositories.sort((r1, r2) =>
+      r1.name.toLowerCase() < r2.name.toLowerCase() ? -1 : r1.name.toLowerCase() > r2.name.toLowerCase() ? 1 : 0,
+    );
+  } else {
+    return repositories.sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
+  }
+};
+
 function RepositoryList(props: RepositoryListProps) {
-  const { repositories } = props;
-  const dispatch = useDispatch();
+  let { repositories } = props;
   const [viewMode, setViewMode] = useState('tiles');
   const [sorting, setSorting] = useState('alphabetical');
 
@@ -23,21 +30,9 @@ function RepositoryList(props: RepositoryListProps) {
   const toggleSorting = () => {
     const newSorting = sorting === 'alphabetical' ? 'stars' : 'alphabetical';
     setSorting(newSorting);
-    dispatch({
-      type: ActionTypeKeys.SORT_REPOSITORIES,
-      repositories: sortRepositories(repositories, newSorting),
-    });
   };
 
-  const sortRepositories = (repositories: Repository[], sorting: string) => {
-    if (sorting === 'alphabetical') {
-      return repositories.sort((r1, r2) =>
-        r1.name.toLowerCase() < r2.name.toLowerCase() ? -1 : r1.name.toLowerCase() > r2.name.toLowerCase() ? 1 : 0,
-      );
-    } else {
-      return repositories.sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
-    }
-  };
+  repositories = sortRepositories(repositories, sorting);
 
   return (
     <>

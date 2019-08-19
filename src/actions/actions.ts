@@ -20,11 +20,6 @@ export interface SetStatisticsAction {
   starsStatistics: StarsStatistics;
 }
 
-export interface SortRepositoriesAction {
-  type: ActionTypeKeys.SORT_REPOSITORIES;
-  repositories: Repository[];
-}
-
 export interface OtherAction {
   type: ActionTypeKeys.OTHER_ACTION;
 }
