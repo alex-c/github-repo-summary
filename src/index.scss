@@ -58,13 +58,16 @@ main.viewport .bp3-card {
 
 #repository-list {
   margin-bottom: 42px;
-  #repository-list-content {
+  #repository-list-controls {
+    float: right;
+  }
+  #repository-list-cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  #repository-list-controls {
-    float: right;
+  #repository-list-table-container {
+    overflow: auto;
   }
 }
 

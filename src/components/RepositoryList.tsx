@@ -55,10 +55,14 @@ function RepositoryList(props: RepositoryListProps) {
             </div>
             <h2>Repositories</h2>
           </div>
-          <div id="repository-list-content">
-            {viewMode === 'tiles' ? (
-              repositories.map((repository, index) => <RepositoryView repository={repository} key={index} />)
-            ) : (
+          {viewMode === 'tiles' ? (
+            <div id="repository-list-cards-container">
+              {repositories.map((repository, index) => (
+                <RepositoryView repository={repository} key={index} />
+              ))}
+            </div>
+          ) : (
+            <div id="repository-list-table-container">
               <HTMLTable bordered={true} striped={true}>
                 <thead>
                   <tr>
@@ -87,8 +91,8 @@ function RepositoryList(props: RepositoryListProps) {
                   ))}
                 </tbody>
               </HTMLTable>
-            )}
-          </div>
+            </div>
+          )}
         </Card>
       )}
     </>
