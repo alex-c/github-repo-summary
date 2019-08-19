@@ -20,6 +20,23 @@ import { useDispatch } from 'react-redux';
 import { ActionTypeKeys } from '../actions/actionTypeKeys';
 import { Repository } from '../models/Repository';
 import { Language } from '../models/Language';
+import { StarsStatistics } from '../models/StarsStatistics';
+
+const roundStarsStat = (stars: number) => Math.round(stars * 10) / 10;
+
+const calculateMeanStars = (stars: number, repoCount: number) => roundStarsStat(stars / repoCount);
+
+const calculateMedianStars = (repositories: Repository[]) => {
+  const sortedRepos = repositories.sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
+  const repoMedian = sortedRepos.length / 2;
+  if (sortedRepos.length % 2 === 1) {
+    return roundStarsStat(
+      (sortedRepos[Math.floor(repoMedian)].stargazers_count + sortedRepos[Math.ceil(repoMedian)].stargazers_count) / 2,
+    );
+  } else {
+    return sortedRepos[repoMedian].stargazers_count;
+  }
+};
 
 function App() {
   const dispatch = useDispatch();
@@ -75,9 +92,17 @@ function App() {
 
   const processLoadedRepos = (repositories: Repository[]) => {
     const languages: Language[] = [];
+    const starStatistics: StarsStatistics = {
+      max_stars_repo: null,
+      average_stars: 0,
+      median_stars: 0,
+    };
 
-    // Find unique languages and count the number of repos for each
+    // Compute repositories stats
+    let maxStars = 0;
+    let totalStars = 0;
     for (let repository of repositories) {
+      // Find unique languages and count the number of repos for each
       const language = languages.find(language => language.name === repository.language);
       if (language === undefined) {
         languages.push({
@@ -87,7 +112,18 @@ function App() {
       } else {
         language.count++;
       }
+
+      // Find repo with most stars and count total stars
+      totalStars += repository.stargazers_count;
+      if (repository.stargazers_count > maxStars) {
+        starStatistics.max_stars_repo = repository;
+        maxStars = repository.stargazers_count;
+      }
     }
+
+    // Calculate average and median stars
+    starStatistics.average_stars = calculateMeanStars(totalStars, repositories.length);
+    starStatistics.median_stars = calculateMedianStars(repositories);
 
     // Handle the `null` language
     const unknownLanguage = languages.find(language => language.name === null);
@@ -102,6 +138,7 @@ function App() {
     dispatch({
       type: ActionTypeKeys.SET_STATISTICS,
       languageStatistics: { languages, language_count: languages.length, repository_count: repositories.length },
+      starStatistics: starStatistics,
     });
     dispatch({
       type: ActionTypeKeys.SET_REPOSITORIES,
