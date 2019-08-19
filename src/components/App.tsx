@@ -92,15 +92,15 @@ function App() {
 
   const processLoadedRepos = (repositories: Repository[]) => {
     const languages: Language[] = [];
-    const starStatistics: StarsStatistics = {
+    const starsStatistics: StarsStatistics = {
       max_stars_repo: null,
+      total_stars: 0,
       average_stars: 0,
       median_stars: 0,
     };
 
     // Compute repositories stats
     let maxStars = 0;
-    let totalStars = 0;
     for (let repository of repositories) {
       // Find unique languages and count the number of repos for each
       const language = languages.find(language => language.name === repository.language);
@@ -114,16 +114,16 @@ function App() {
       }
 
       // Find repo with most stars and count total stars
-      totalStars += repository.stargazers_count;
+      starsStatistics.total_stars += repository.stargazers_count;
       if (repository.stargazers_count > maxStars) {
-        starStatistics.max_stars_repo = repository;
+        starsStatistics.max_stars_repo = repository;
         maxStars = repository.stargazers_count;
       }
     }
 
     // Calculate average and median stars
-    starStatistics.average_stars = calculateMeanStars(totalStars, repositories.length);
-    starStatistics.median_stars = calculateMedianStars(repositories);
+    starsStatistics.average_stars = calculateMeanStars(starsStatistics.total_stars, repositories.length);
+    starsStatistics.median_stars = calculateMedianStars(repositories);
 
     // Handle the `null` language
     const unknownLanguage = languages.find(language => language.name === null);
@@ -138,7 +138,7 @@ function App() {
     dispatch({
       type: ActionTypeKeys.SET_STATISTICS,
       languageStatistics: { languages, language_count: languages.length, repository_count: repositories.length },
-      starStatistics: starStatistics,
+      starsStatistics: starsStatistics,
     });
     dispatch({
       type: ActionTypeKeys.SET_REPOSITORIES,

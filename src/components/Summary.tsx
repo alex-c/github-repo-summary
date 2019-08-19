@@ -11,6 +11,7 @@ function Summary() {
   const user = useSelector((state: AppState) => state.user);
   const repositories = useSelector((state: AppState) => state.repositories);
   const languageStatistics = useSelector((state: AppState) => state.language_statistics);
+  const starsStatistics = useSelector((state: AppState) => state.stars_statistics);
   return (
     <main className="viewport">
       {user.login !== '' ? (
@@ -18,7 +19,7 @@ function Summary() {
           <UserSummary user={user} />
           {repositories.length !== 0 ? (
             <div>
-              <RepositoriesSummary languageStatistics={languageStatistics} />
+              <RepositoriesSummary languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
               <RepositoryList repositories={repositories} />
             </div>
           ) : (
