@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Card, Elevation, Button, HTMLTable, ButtonGroup } from '@blueprintjs/core';
-import { Repository } from '../models/Repository';
+import { Card, Elevation, Button, HTMLTable, ButtonGroup, Popover, Position } from '@blueprintjs/core';
+import { Repository } from '../../models/Repository';
 import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
-import { Sorting } from '../constants/Sorting';
-import { changeSorting } from '../actions/actionCreators';
+import { Sorting } from '../../constants/Sorting';
+import { changeSorting } from '../../actions/actionCreators';
+import { sortingDisplayText, sortingIconName } from './helpers';
+import SortingOptions from './SortingOptions';
 
 interface RepositoryListProps {
   repositories: Repository[];
@@ -21,8 +23,8 @@ function RepositoryList(props: RepositoryListProps) {
     setViewMode(viewMode === 'tiles' ? 'table' : 'tiles');
   };
 
-  const toggleSorting = () => {
-    dispatch(changeSorting(sorting === Sorting.Alphabetical ? Sorting.ByStars : Sorting.Alphabetical));
+  const changeSortingHandler = (sorting: Sorting) => () => {
+    dispatch(changeSorting(sorting));
   };
 
   return (
@@ -32,11 +34,13 @@ function RepositoryList(props: RepositoryListProps) {
           <div id="repository-list-header">
             <div id="repository-list-controls">
               <ButtonGroup>
-                <Button
-                  text={sorting === Sorting.Alphabetical ? 'Sort by stars' : 'Sort alphabetically'}
-                  onClick={toggleSorting}
-                  icon={sorting === Sorting.Alphabetical ? IconNames.SORT_DESC : IconNames.SORT_ALPHABETICAL}
-                />
+                <Popover content={<SortingOptions handler={changeSortingHandler} />} position={Position.BOTTOM}>
+                  <Button
+                    text={'Sorting: ' + sortingDisplayText(sorting)}
+                    icon={sortingIconName(sorting)}
+                    rightIcon={IconNames.CARET_DOWN}
+                  />
+                </Popover>
                 <Button
                   text={viewMode === 'tiles' ? 'View table' : 'View tiles'}
                   onClick={toggleViewMode}

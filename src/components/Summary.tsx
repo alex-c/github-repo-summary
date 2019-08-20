@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { AppState } from '../models/AppState';
 import UserSummary from './UserSummary';
 import RepositoriesSummary from './RepositoriesSummary';
-import RepositoryList from './RepositoryList';
+import RepositoryList from './repostory_list/RepositoryList';
 import { NonIdealState } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
 

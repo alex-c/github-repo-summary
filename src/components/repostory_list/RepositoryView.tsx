@@ -1,8 +1,8 @@
 import React from 'react';
-import { Repository } from '../models/Repository';
 import { IconNames } from '@blueprintjs/icons';
-import IconItem from './IconItem';
 import { Tooltip, Position } from '@blueprintjs/core';
+import IconItem from '../IconItem';
+import { Repository } from '../../models/Repository';
 
 interface RepositoryView {
   repository: Repository;
