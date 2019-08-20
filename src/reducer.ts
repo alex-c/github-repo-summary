@@ -1,6 +1,7 @@
 import { ActionTypes } from './actions/actionTypes';
 import { ActionTypeKeys } from './actions/actionTypeKeys';
 import { AppState } from './models/AppState';
+import { Sorting } from './constants/Sorting';
 
 const initialState = {
   user: {
@@ -20,6 +21,7 @@ const initialState = {
     reposUrl: '',
   },
   repositories: [],
+  sorting: Sorting.Alphabetical,
   language_statistics: null,
   stars_statistics: null,
 };
@@ -41,6 +43,12 @@ export default function reducer(state: AppState = initialState, action: ActionTy
         ...state,
         language_statistics: action.languageStatistics,
         stars_statistics: action.starsStatistics,
+      };
+    case ActionTypeKeys.SORT_REPOSITORIES:
+      return {
+        ...state,
+        sorting: action.sorting,
+        repositories: action.repositories,
       };
     default:
       return state;

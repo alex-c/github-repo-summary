@@ -10,6 +10,7 @@ import { IconNames } from '@blueprintjs/icons';
 function Summary() {
   const user = useSelector((state: AppState) => state.user);
   const repositories = useSelector((state: AppState) => state.repositories);
+  const sorting = useSelector((state: AppState) => state.sorting);
   const languageStatistics = useSelector((state: AppState) => state.language_statistics);
   const starsStatistics = useSelector((state: AppState) => state.stars_statistics);
   return (
@@ -20,7 +21,7 @@ function Summary() {
           {repositories.length !== 0 ? (
             <div>
               <RepositoriesSummary languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
-              <RepositoryList repositories={repositories} />
+              <RepositoryList repositories={repositories} sorting={sorting} />
             </div>
           ) : (
             <NonIdealState

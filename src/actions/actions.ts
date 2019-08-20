@@ -3,6 +3,7 @@ import { User } from '../models/User';
 import { Repository } from '../models/Repository';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
+import { Sorting } from '../constants/Sorting';
 
 export interface SetUserAction {
   type: ActionTypeKeys.SET_USER;
@@ -11,6 +12,12 @@ export interface SetUserAction {
 
 export interface SetRepositoriesAction {
   type: ActionTypeKeys.SET_REPOSITORIES;
+  repositories: Repository[];
+}
+
+export interface SortRepositoriesAction {
+  type: ActionTypeKeys.SORT_REPOSITORIES;
+  sorting: Sorting;
   repositories: Repository[];
 }
 

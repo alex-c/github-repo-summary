@@ -3,13 +3,17 @@ import { Card, Elevation, Button, HTMLTable, ButtonGroup } from '@blueprintjs/co
 import { Repository } from '../models/Repository';
 import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
+import { useDispatch } from 'react-redux';
+import { ActionTypeKeys } from '../actions/actionTypeKeys';
+import { Sorting } from '../constants/Sorting';
 
 interface RepositoryListProps {
   repositories: Repository[];
+  sorting: Sorting;
 }
 
-const sortRepositories = (repositories: Repository[], sorting: string) => {
-  if (sorting === 'alphabetical') {
+const sortRepositories = (repositories: Repository[], sorting: Sorting) => {
+  if (sorting === Sorting.Alphabetical) {
     return repositories.sort((r1, r2) =>
       r1.name.toLowerCase() < r2.name.toLowerCase() ? -1 : r1.name.toLowerCase() > r2.name.toLowerCase() ? 1 : 0,
     );
@@ -19,20 +23,22 @@ const sortRepositories = (repositories: Repository[], sorting: string) => {
 };
 
 function RepositoryList(props: RepositoryListProps) {
-  let { repositories } = props;
+  let { repositories, sorting } = props;
+  const dispatch = useDispatch();
   const [viewMode, setViewMode] = useState('tiles');
-  const [sorting, setSorting] = useState('alphabetical');
 
   const toggleViewMode = () => {
     setViewMode(viewMode === 'tiles' ? 'table' : 'tiles');
   };
 
   const toggleSorting = () => {
-    const newSorting = sorting === 'alphabetical' ? 'stars' : 'alphabetical';
-    setSorting(newSorting);
+    const newSorting = sorting === Sorting.Alphabetical ? Sorting.ByStars : Sorting.Alphabetical;
+    dispatch({
+      type: ActionTypeKeys.SORT_REPOSITORIES,
+      sorting: newSorting,
+      repositories: sortRepositories(repositories, newSorting),
+    });
   };
-
-  repositories = sortRepositories(repositories, sorting);
 
   return (
     <>
@@ -42,9 +48,9 @@ function RepositoryList(props: RepositoryListProps) {
             <div id="repository-list-controls">
               <ButtonGroup>
                 <Button
-                  text={sorting === 'alphabetical' ? 'Sort by stars' : 'Sort alphabetically'}
+                  text={sorting === Sorting.Alphabetical ? 'Sort by stars' : 'Sort alphabetically'}
                   onClick={toggleSorting}
-                  icon={sorting === 'alphabetical' ? IconNames.SORT_DESC : IconNames.SORT_ALPHABETICAL}
+                  icon={sorting === Sorting.Alphabetical ? IconNames.SORT_DESC : IconNames.SORT_ALPHABETICAL}
                 />
                 <Button
                   text={viewMode === 'tiles' ? 'View table' : 'View tiles'}
