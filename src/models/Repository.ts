@@ -4,7 +4,8 @@ export type Repository = {
   language: string,
   description: string,
   stargazers_count: number,
-  watchers_count: number,
   forks: number,
   html_url: string,
+  open_issues: number,
+  updated_at: string,
 };

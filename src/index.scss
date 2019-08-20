@@ -99,12 +99,16 @@ main.viewport .bp3-card {
       border-radius: 2px;
     }
     .repository-footer {
+      overflow: auto;
       .bp3-icon {
         margin-left: 8px;
         margin-right: 4px;
         &:first-child {
           margin-left: 0px;
         }
+      }
+      .repository-footer-right {
+        float: right;
       }
     }
 }

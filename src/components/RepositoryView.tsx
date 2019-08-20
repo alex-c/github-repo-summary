@@ -2,6 +2,7 @@ import React from 'react';
 import { Repository } from '../models/Repository';
 import { IconNames } from '@blueprintjs/icons';
 import IconItem from './IconItem';
+import { Tooltip, Position } from '@blueprintjs/core';
 
 interface RepositoryView {
   repository: Repository;
@@ -27,9 +28,14 @@ function RepositoryView(props: RepositoryView) {
         <i>{repository.description}</i>
       </div>
       <div className="repository-footer">
-        <IconItem icon={IconNames.STAR} text={repository.stargazers_count} />
-        <IconItem icon={IconNames.EYE_OPEN} text={repository.watchers_count} />
-        <IconItem icon={IconNames.GIT_BRANCH} text={repository.forks} />
+        {repository.stargazers_count !== 0 && <IconItem icon={IconNames.STAR} text={repository.stargazers_count} />}
+        {repository.forks !== 0 && <IconItem icon={IconNames.GIT_BRANCH} text={repository.forks} />}
+        {repository.open_issues !== 0 && <IconItem icon={IconNames.ISSUE} text={repository.open_issues} />}
+        <div className="repository-footer-right">
+          <Tooltip content={repository.updated_at} boundary="viewport" position={Position.TOP}>
+            <IconItem icon={IconNames.UPDATED} text={new Date(repository.updated_at).toLocaleDateString()} />
+          </Tooltip>
+        </div>
       </div>
     </div>
   );

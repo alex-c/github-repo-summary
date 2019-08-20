@@ -70,8 +70,9 @@ function RepositoryList(props: RepositoryListProps) {
                     <th>Description</th>
                     <th>Language</th>
                     <th>Stars</th>
-                    <th>Watchers</th>
                     <th>Forked</th>
+                    <th>Open Issues</th>
+                    <th>Last Updated</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,8 +86,9 @@ function RepositoryList(props: RepositoryListProps) {
                       <td>{repository.description}</td>
                       <td>{repository.language}</td>
                       <td>{repository.stargazers_count}</td>
-                      <td>{repository.watchers_count}</td>
                       <td>{repository.forks}</td>
+                      <td>{repository.open_issues}</td>
+                      <td>{new Date(repository.updated_at).toLocaleDateString()}</td>
                     </tr>
                   ))}
                 </tbody>

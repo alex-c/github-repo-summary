@@ -2,7 +2,7 @@
   "name": "github-repo-summary",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://alex-c.github.io/github-repo-summary/",
+  "homepage": "https://alex-c.github.io/github-repo-summary/",
   "dependencies": {
     "@babel/core": "7.4.3",
     "@blueprintjs/core": "^3.17.1",
