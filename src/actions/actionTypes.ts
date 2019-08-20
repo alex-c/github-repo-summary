@@ -1,14 +1,3 @@
-import {
-  SetUserAction,
-  OtherAction,
-  SetRepositoriesAction,
-  SetStatisticsAction,
-  SortRepositoriesAction,
-} from './actions';
+import { SetUserAction, OtherAction, SetRepositoriesAction, SetStatisticsAction, SetSortingAction } from './actions';
 
-export type ActionTypes =
-  | SetUserAction
-  | SetRepositoriesAction
-  | SetStatisticsAction
-  | SortRepositoriesAction
-  | OtherAction;
+export type ActionTypes = SetUserAction | SetRepositoriesAction | SetStatisticsAction | SetSortingAction | OtherAction;

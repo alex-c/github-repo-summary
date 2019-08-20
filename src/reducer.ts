@@ -44,11 +44,10 @@ export default function reducer(state: AppState = initialState, action: ActionTy
         language_statistics: action.languageStatistics,
         stars_statistics: action.starsStatistics,
       };
-    case ActionTypeKeys.SORT_REPOSITORIES:
+    case ActionTypeKeys.SET_SORTING:
       return {
         ...state,
         sorting: action.sorting,
-        repositories: action.repositories,
       };
     default:
       return state;

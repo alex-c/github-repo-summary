@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 // Import Redux
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import rootReducer from './reducer';
 
 // Import Blueprint
@@ -17,7 +18,7 @@ import './index.scss';
 FocusStyleManager.onlyShowFocusOnTabs();
 
 // Set up store
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 // Render!
 ReactDOM.render(

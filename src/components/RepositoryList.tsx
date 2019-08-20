@@ -4,23 +4,13 @@ import { Repository } from '../models/Repository';
 import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
-import { ActionTypeKeys } from '../actions/actionTypeKeys';
 import { Sorting } from '../constants/Sorting';
+import { changeSorting } from '../actions/actionCreators';
 
 interface RepositoryListProps {
   repositories: Repository[];
   sorting: Sorting;
 }
-
-const sortRepositories = (repositories: Repository[], sorting: Sorting) => {
-  if (sorting === Sorting.Alphabetical) {
-    return repositories.sort((r1, r2) =>
-      r1.name.toLowerCase() < r2.name.toLowerCase() ? -1 : r1.name.toLowerCase() > r2.name.toLowerCase() ? 1 : 0,
-    );
-  } else {
-    return repositories.sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
-  }
-};
 
 function RepositoryList(props: RepositoryListProps) {
   let { repositories, sorting } = props;
@@ -32,12 +22,7 @@ function RepositoryList(props: RepositoryListProps) {
   };
 
   const toggleSorting = () => {
-    const newSorting = sorting === Sorting.Alphabetical ? Sorting.ByStars : Sorting.Alphabetical;
-    dispatch({
-      type: ActionTypeKeys.SORT_REPOSITORIES,
-      sorting: newSorting,
-      repositories: sortRepositories(repositories, newSorting),
-    });
+    dispatch(changeSorting(sorting === Sorting.Alphabetical ? Sorting.ByStars : Sorting.Alphabetical));
   };
 
   return (

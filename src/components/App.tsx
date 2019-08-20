@@ -21,6 +21,7 @@ import { ActionTypeKeys } from '../actions/actionTypeKeys';
 import { Repository } from '../models/Repository';
 import { Language } from '../models/Language';
 import { StarsStatistics } from '../models/StarsStatistics';
+import { loadRepositories } from '../actions/actionCreators';
 
 const roundStarsStat = (stars: number) => Math.round(stars * 10) / 10;
 
@@ -140,10 +141,7 @@ function App() {
       languageStatistics: { languages, language_count: languages.length, repository_count: repositories.length },
       starsStatistics: starsStatistics,
     });
-    dispatch({
-      type: ActionTypeKeys.SET_REPOSITORIES,
-      repositories: repositories,
-    });
+    dispatch(loadRepositories(repositories));
   };
 
   const inputButtons = (

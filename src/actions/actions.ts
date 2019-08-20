@@ -15,16 +15,15 @@ export interface SetRepositoriesAction {
   repositories: Repository[];
 }
 
-export interface SortRepositoriesAction {
-  type: ActionTypeKeys.SORT_REPOSITORIES;
-  sorting: Sorting;
-  repositories: Repository[];
-}
-
 export interface SetStatisticsAction {
   type: ActionTypeKeys.SET_STATISTICS;
   languageStatistics: LanguageStatistics;
   starsStatistics: StarsStatistics;
+}
+
+export interface SetSortingAction {
+  type: ActionTypeKeys.SET_SORTING;
+  sorting: Sorting;
 }
 
 export interface OtherAction {
