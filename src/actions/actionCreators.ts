@@ -1,5 +1,11 @@
 import { User } from '../models/User';
-import { SetUserAction, SetRepositoriesAction, SetSortingAction, SetStatisticsAction } from './actions';
+import {
+  SetUserAction,
+  SetRepositoriesAction,
+  SetSortingAction,
+  SetStatisticsAction,
+  SetLoadingStateAction,
+} from './actions';
 import { ActionTypeKeys } from './actionTypeKeys';
 import { Repository } from '../models/Repository';
 import { Sorting } from '../constants/Sorting';
@@ -38,4 +44,11 @@ const setSorting = (sorting: Sorting): SetSortingAction => {
   };
 };
 
-export { setUser, setRepositories, setStatistics, setSorting };
+const setLoadingState = (loading_state: boolean): SetLoadingStateAction => {
+  return {
+    type: ActionTypeKeys.SET_LOADING_STATE,
+    loading_state,
+  };
+};
+
+export { setUser, setRepositories, setStatistics, setSorting, setLoadingState };

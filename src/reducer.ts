@@ -12,18 +12,19 @@ const initialState = {
     company: '',
     blog: '',
     email: '',
-    avatarUrl: '',
+    avatar_url: '',
     htmlUrl: '',
-    publicRepos: 0,
-    publicGists: 0,
+    public_repos: 0,
+    public_gists: 0,
     followers: 0,
     following: 0,
-    reposUrl: '',
+    repos_url: '',
   },
   repositories: [],
   sorting: Sorting.Alphabetical,
   language_statistics: null,
   stars_statistics: null,
+  loading_state: false,
 };
 
 export default function reducer(state: AppState = initialState, action: ActionTypes) {
@@ -48,6 +49,11 @@ export default function reducer(state: AppState = initialState, action: ActionTy
       return {
         ...state,
         sorting: action.sorting,
+      };
+    case ActionTypeKeys.SET_LOADING_STATE:
+      return {
+        ...state,
+        loading_state: action.loading_state,
       };
     default:
       return state;

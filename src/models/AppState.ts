@@ -10,4 +10,5 @@ export type AppState = {
   sorting: Sorting,
   language_statistics: LanguageStatistics,
   stars_statistics: StarsStatistics,
+  loading_state: boolean,
 };

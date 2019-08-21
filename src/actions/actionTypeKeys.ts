@@ -3,5 +3,6 @@ export enum ActionTypeKeys {
     SET_REPOSITORIES = "SET_REPOSITORIES",
     SET_STATISTICS = "SET_STATISTICS",
     SET_SORTING = "SET_SORTING",
+    SET_LOADING_STATE = "SET_LOADING_STATE",
     OTHER_ACTION = "__any_other_action_type__"
 }

@@ -16,12 +16,13 @@ import {
 import Summary from './Summary';
 import api from '../services/api';
 import { IconNames } from '@blueprintjs/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Repository } from '../models/Repository';
 import { Language } from '../models/Language';
 import { StarsStatistics } from '../models/StarsStatistics';
 import { loadRepositories } from '../actions/thunkActionCreators';
-import { setUser, setStatistics } from '../actions/actionCreators';
+import { setUser, setStatistics, setLoadingState } from '../actions/actionCreators';
+import { AppState } from '../models/AppState';
 
 const roundStarsStat = (stars: number) => Math.round(stars * 10) / 10;
 
@@ -43,13 +44,15 @@ function App() {
   const dispatch = useDispatch();
   const [userName, setUserName] = useState('');
   const [popoverVisible, setPopoverVisible] = useState(false);
+  const currentUserName = useSelector((state: AppState) => state.user.login);
 
   const searchHandler = () => {
-    if (userName !== '') {
+    if (userName !== '' && userName !== currentUserName) {
       api
         .getUser(userName)
         .then(result => {
           dispatch(setUser(result));
+          dispatch(setLoadingState(true));
           let numberOfRepos = result.public_repos;
           if (numberOfRepos > 0) {
             let page = 1;

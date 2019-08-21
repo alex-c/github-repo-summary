@@ -26,6 +26,11 @@ export interface SetSortingAction {
   sorting: Sorting;
 }
 
+export interface SetLoadingStateAction {
+  type: ActionTypeKeys.SET_LOADING_STATE;
+  loading_state: boolean;
+}
+
 export interface OtherAction {
   type: ActionTypeKeys.OTHER_ACTION;
 }
