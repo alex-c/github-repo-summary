@@ -17,11 +17,11 @@ import Summary from './Summary';
 import api from '../services/api';
 import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
-import { ActionTypeKeys } from '../actions/actionTypeKeys';
 import { Repository } from '../models/Repository';
 import { Language } from '../models/Language';
 import { StarsStatistics } from '../models/StarsStatistics';
-import { loadRepositories } from '../actions/actionCreators';
+import { loadRepositories } from '../actions/thunkActionCreators';
+import { setUser, setStatistics } from '../actions/actionCreators';
 
 const roundStarsStat = (stars: number) => Math.round(stars * 10) / 10;
 
@@ -44,45 +44,29 @@ function App() {
   const [userName, setUserName] = useState('');
   const [popoverVisible, setPopoverVisible] = useState(false);
 
-  const handleSearch = () => {
+  const searchHandler = () => {
     if (userName !== '') {
       api
         .getUser(userName)
         .then(result => {
-          dispatch({
-            type: ActionTypeKeys.SET_USER,
-            user: {
-              login: result.login,
-              name: result.name,
-              bio: result.bio,
-              location: result.location,
-              company: result.company,
-              blog: result.blog,
-              email: result.email,
-              avatarUrl: result.avatar_url,
-              htmlUrl: result.html_url,
-              publicRepos: result.public_repos,
-              publicGists: result.public_gists,
-              followers: result.followers,
-              following: result.following,
-              reposUrl: result.repos_url,
-            },
-          });
+          dispatch(setUser(result));
           let numberOfRepos = result.public_repos;
-          let page = 1;
-          let promises: object[] = [];
-          while (numberOfRepos > 0) {
-            promises.push(api.getUserRepositories(result.repos_url, page));
-            numberOfRepos -= 100;
-            page++;
-          }
-          Promise.all(promises).then((values: any[]) => {
-            let repositories: Repository[] = [];
-            for (let value of values) {
-              repositories.push(...value.data);
+          if (numberOfRepos > 0) {
+            let page = 1;
+            let promises: object[] = [];
+            while (numberOfRepos > 0) {
+              promises.push(api.getUserRepositories(result.repos_url, page));
+              numberOfRepos -= 100;
+              page++;
             }
-            processLoadedRepos(repositories);
-          });
+            Promise.all(promises).then((values: any[]) => {
+              let repositories: Repository[] = [];
+              for (let value of values) {
+                repositories.push(...value.data);
+              }
+              processLoadedRepos(repositories);
+            });
+          }
         })
         .catch(() => {
           setPopoverVisible(true);
@@ -136,18 +120,19 @@ function App() {
     languages.sort((language1, language2) => language2.count - language1.count);
 
     // Dispatch full repo list and language stats
-    dispatch({
-      type: ActionTypeKeys.SET_STATISTICS,
-      languageStatistics: { languages, language_count: languages.length, repository_count: repositories.length },
-      starsStatistics: starsStatistics,
-    });
+    dispatch(
+      setStatistics(
+        { languages, language_count: languages.length, repository_count: repositories.length },
+        starsStatistics,
+      ),
+    );
     dispatch(loadRepositories(repositories));
   };
 
   const inputButtons = (
     <>
       <Tooltip content="Search">
-        <Button icon="search" intent={Intent.PRIMARY} minimal={true} onClick={handleSearch} />
+        <Button icon="search" intent={Intent.PRIMARY} minimal={true} onClick={searchHandler} />
       </Tooltip>
       <Tooltip content="Clear">
         <Button icon="cross" intent={Intent.WARNING} minimal={true} onClick={() => setUserName('')} />
@@ -171,7 +156,7 @@ function App() {
                 onChange={(event: { target: any }) => setUserName(event.target.value)}
                 onKeyPress={event => {
                   if (event.charCode === 13) {
-                    handleSearch();
+                    searchHandler();
                   }
                 }}
               />

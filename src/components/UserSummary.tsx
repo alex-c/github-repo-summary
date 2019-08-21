@@ -13,7 +13,7 @@ function UserSummary(props: UserSummaryProps) {
   return (
     <Card id="user-summary" elevation={Elevation.TWO}>
       <div id="avatar">
-        <img src={user.avatarUrl} alt="Github user avatar" />
+        <img src={user.avatar_url} alt="Github user avatar" />
       </div>
       <p>
         <b>{user.name}</b> /&nbsp;
@@ -29,8 +29,8 @@ function UserSummary(props: UserSummaryProps) {
         {user.blog !== '' && <IconItem icon={IconNames.LINK} text={user.blog} link={user.blog} />}
       </p>
       <div>
-        <Tag icon={IconNames.GIT_BRANCH}>Repositories: {user.publicRepos}</Tag>
-        <Tag icon={IconNames.DOCUMENT}>Gists: {user.publicGists}</Tag>
+        <Tag icon={IconNames.GIT_BRANCH}>Repositories: {user.public_repos}</Tag>
+        <Tag icon={IconNames.DOCUMENT}>Gists: {user.public_gists}</Tag>
         <Tag icon={IconNames.USER}>Followers: {user.followers}</Tag>
         <Tag icon={IconNames.USER}>Following: {user.following}</Tag>
       </div>

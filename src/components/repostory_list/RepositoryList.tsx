@@ -5,7 +5,7 @@ import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
 import { Sorting } from '../../constants/Sorting';
-import { changeSorting } from '../../actions/actionCreators';
+import { changeSorting } from '../../actions/thunkActionCreators';
 import { sortingDisplayText, sortingIconName } from './helpers';
 import SortingOptions from './SortingOptions';
 
