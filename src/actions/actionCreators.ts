@@ -5,12 +5,14 @@ import {
   SetSortingAction,
   SetStatisticsAction,
   SetLoadingStateAction,
+  SetFavoritesAction,
 } from './actions';
 import { ActionTypeKeys } from './actionTypeKeys';
 import { Repository } from '../models/Repository';
 import { Sorting } from '../constants/Sorting';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
+import { Favorite } from '../models/Favorite';
 
 const setUser = (user: User): SetUserAction => {
   return {
@@ -51,4 +53,11 @@ const setLoadingState = (loading_state: boolean): SetLoadingStateAction => {
   };
 };
 
-export { setUser, setRepositories, setStatistics, setSorting, setLoadingState };
+const setFavorites = (favorites: Favorite[]): SetFavoritesAction => {
+  return {
+    type: ActionTypeKeys.SET_FAVORITES,
+    favorites,
+  };
+};
+
+export { setUser, setRepositories, setStatistics, setSorting, setLoadingState, setFavorites };

@@ -66,6 +66,8 @@ function Navbar() {
               }
               processLoadedRepos(repositories);
             });
+          } else {
+            dispatch(setLoadingState(false));
           }
         })
         .catch(() => {
@@ -144,10 +146,10 @@ function Navbar() {
               rightElement={
                 <>
                   <Tooltip content="Search">
-                    <Button icon="search" intent={Intent.PRIMARY} minimal={true} onClick={searchHandler} />
+                    <Button icon={IconNames.SEARCH} intent={Intent.PRIMARY} minimal={true} onClick={searchHandler} />
                   </Tooltip>
                   <Tooltip content="Clear">
-                    <Button icon="cross" intent={Intent.WARNING} minimal={true} onClick={resetHandler} />
+                    <Button icon={IconNames.TRASH} intent={Intent.DANGER} minimal={true} onClick={resetHandler} />
                   </Tooltip>
                 </>
               }

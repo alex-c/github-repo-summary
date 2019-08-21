@@ -19,14 +19,14 @@ body {
 #navbar {
   background-color: white;
   box-shadow: 0 0 0 1px rgba(16,22,26,.1),0 0 0 rgba(16,22,26,0),0 1px 1px rgba(16,22,26,.2);
-  padding: 8px;
+  padding: 4px 0px;
   .viewport {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     &>div {
       flex-grow: 1;
-      margin: 4px 0px 4px;
+      margin: 4px 0px;
     }
   }
   #navbar-title {
@@ -39,6 +39,24 @@ body {
   }
   #navbar-right {
     text-align: right;
+  }
+}
+
+#favorites {
+  margin-top: 16px;
+  padding: 4px;
+  text-align: left;
+  overflow: auto;
+  border: 1px dashed #D0D0D0;
+  border-radius: 3px;
+  .bp3-tag {
+    margin-right: 4px;
+  }
+  #favorites-controls {
+    float: right;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -68,6 +86,12 @@ main.viewport .bp3-card {
       max-width: 100px;
       max-height: 100px;
       margin-right: 16px;
+    }
+  }
+  #favorite {
+    float: right;
+    &:hover {
+      cursor: pointer;
     }
   }
   .bp3-icon {

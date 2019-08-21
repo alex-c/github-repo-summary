@@ -4,6 +4,7 @@ import { Repository } from '../models/Repository';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
 import { Sorting } from '../constants/Sorting';
+import { Favorite } from '../models/Favorite';
 
 export interface SetUserAction {
   type: ActionTypeKeys.SET_USER;
@@ -29,6 +30,11 @@ export interface SetSortingAction {
 export interface SetLoadingStateAction {
   type: ActionTypeKeys.SET_LOADING_STATE;
   loading_state: boolean;
+}
+
+export interface SetFavoritesAction {
+  type: ActionTypeKeys.SET_FAVORITES;
+  favorites: Favorite[];
 }
 
 export interface OtherAction {

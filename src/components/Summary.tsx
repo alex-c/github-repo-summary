@@ -14,40 +14,36 @@ function Summary() {
   const languageStatistics = useSelector((state: AppState) => state.language_statistics);
   const starsStatistics = useSelector((state: AppState) => state.stars_statistics);
   const loading_state = useSelector((state: AppState) => state.loading_state);
-  return (
-    <main className="viewport">
-      {user.login !== '' ? (
+  return user.login !== '' ? (
+    <>
+      <UserSummary user={user} />
+      {loading_state ? (
+        <Card elevation={Elevation.TWO}>
+          <Spinner intent={Intent.PRIMARY} />
+        </Card>
+      ) : (
         <>
-          <UserSummary user={user} />
-          {loading_state ? (
-            <Card elevation={Elevation.TWO}>
-              <Spinner intent={Intent.PRIMARY} />
-            </Card>
+          {repositories.length !== 0 ? (
+            <div>
+              <RepositoriesSummary languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
+              <RepositoryList repositories={repositories} sorting={sorting} />
+            </div>
           ) : (
-            <>
-              {repositories.length !== 0 ? (
-                <div>
-                  <RepositoriesSummary languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
-                  <RepositoryList repositories={repositories} sorting={sorting} />
-                </div>
-              ) : (
-                <NonIdealState
-                  icon={IconNames.DISABLE}
-                  title="No repositories."
-                  description="The user has no public repositories."
-                />
-              )}
-            </>
+            <NonIdealState
+              icon={IconNames.DISABLE}
+              title="No repositories."
+              description="The user has no public repositories."
+            />
           )}
         </>
-      ) : (
-        <NonIdealState
-          icon={IconNames.DISABLE}
-          title="No user selected."
-          description="Enter a Github user name in the search bar above!"
-        />
       )}
-    </main>
+    </>
+  ) : (
+    <NonIdealState
+      icon={IconNames.DISABLE}
+      title="No user selected."
+      description="Enter a Github user name in the search bar above!"
+    />
   );
 }
 

@@ -3,7 +3,7 @@ import { ActionTypeKeys } from './actions/actionTypeKeys';
 import { AppState } from './models/AppState';
 import { Sorting } from './constants/Sorting';
 
-const initialState = {
+const initialState: AppState = {
   user: {
     login: '',
     name: '',
@@ -20,11 +20,12 @@ const initialState = {
     following: 0,
     repos_url: '',
   },
-  repositories: [],
-  sorting: Sorting.Alphabetical,
+  favorites: [],
+  loading_state: false,
   language_statistics: null,
   stars_statistics: null,
-  loading_state: false,
+  repositories: [],
+  sorting: Sorting.Alphabetical,
 };
 
 export default function reducer(state: AppState = initialState, action: ActionTypes) {
@@ -54,6 +55,11 @@ export default function reducer(state: AppState = initialState, action: ActionTy
       return {
         ...state,
         loading_state: action.loading_state,
+      };
+    case ActionTypeKeys.SET_FAVORITES:
+      return {
+        ...state,
+        favorites: action.favorites,
       };
     default:
       return state;
