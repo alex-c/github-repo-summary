@@ -39,11 +39,11 @@ function RepositoriesSummary(props: RepositoriesSummaryProps) {
         />
         <div>
           <p>
-            Max stars:{' '}
+            Max stars:&nbsp;
             <a href={starsStatistics.max_stars_repo.html_url} target="_blank" rel="noopener noreferrer">
               {starsStatistics.max_stars_repo.name}
-            </a>{' '}
-            ({starsStatistics.max_stars_repo.stargazers_count})
+            </a>
+            &nbsp;({starsStatistics.max_stars_repo.stargazers_count})
           </p>
           <p>Average stars: {starsStatistics.average_stars}</p>
           <p>Median stars: {starsStatistics.median_stars}</p>
