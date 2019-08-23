@@ -13,12 +13,25 @@ import { FocusStyleManager } from '@blueprintjs/core';
 // Set up App
 import App from './components/App';
 import './index.scss';
+import localStorageKeys from './constants/LocalStorageKeys';
+import { Sorting } from './constants/Sorting';
 
 // Set up Blueprint
 FocusStyleManager.onlyShowFocusOnTabs();
 
 // Set up store
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const initialState = {
+  user: {
+    login: '',
+  },
+  favorites: JSON.parse(localStorage.getItem(localStorageKeys.favorites)) || [],
+  loading_state: false,
+  language_statistics: null,
+  stars_statistics: null,
+  repositories: [],
+  sorting: Sorting.Alphabetical,
+};
+const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 
 // Render!
 ReactDOM.render(

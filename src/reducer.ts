@@ -2,6 +2,7 @@ import { ActionTypes } from './actions/actionTypes';
 import { ActionTypeKeys } from './actions/actionTypeKeys';
 import { AppState } from './models/AppState';
 import { Sorting } from './constants/Sorting';
+import localStorageKeys from './constants/LocalStorageKeys';
 
 const initialState: AppState = {
   user: {
@@ -57,6 +58,7 @@ export default function reducer(state: AppState = initialState, action: ActionTy
         loading_state: action.loading_state,
       };
     case ActionTypeKeys.SET_FAVORITES:
+      localStorage.setItem(localStorageKeys.favorites, JSON.stringify(action.favorites));
       return {
         ...state,
         favorites: action.favorites,

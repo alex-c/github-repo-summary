@@ -27,12 +27,8 @@ function Favorites() {
   };
 
   const removeAllFavoritesHandler = () => {
+    setEditMode(false);
     dispatch(setFavorites([]));
-    setEditMode(false);
-  };
-
-  const doneEditingHanlder = () => {
-    setEditMode(false);
   };
 
   return (
@@ -55,7 +51,12 @@ function Favorites() {
                     />
                   </Tooltip>
                   <Tooltip content="Done editing">
-                    <Button icon={IconNames.TICK} intent={Intent.SUCCESS} minimal={true} onClick={doneEditingHanlder} />
+                    <Button
+                      icon={IconNames.TICK}
+                      intent={Intent.SUCCESS}
+                      minimal={true}
+                      onClick={toggleEditModeHandler}
+                    />
                   </Tooltip>
                 </>
               }
