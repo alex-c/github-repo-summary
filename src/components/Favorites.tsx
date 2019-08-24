@@ -4,7 +4,7 @@ import { IconNames } from '@blueprintjs/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../models/AppState';
 import { setFavorites } from '../actions/actionCreators';
-import { removeUserFromFavorites, searchUser } from '../actions/thunkActionCreators';
+import { removeUserFromFavorites, searchUser, addUserToFavoritesIfExists } from '../actions/thunkActionCreators';
 
 function Favorites() {
   const favorites = useSelector((state: AppState) => state.favorites);
@@ -31,6 +31,13 @@ function Favorites() {
     dispatch(setFavorites([]));
   };
 
+  const addFavoriteHandler = (values: string[]) => {
+    const newUser = values.shift();
+    if (newUser) {
+      dispatch(addUserToFavoritesIfExists(newUser));
+    }
+  };
+
   return (
     <>
       {favorites.length > 0 && (
@@ -40,6 +47,8 @@ function Favorites() {
               leftIcon={IconNames.STAR}
               values={favorites.map(favorite => favorite.name)}
               onRemove={removeFavoriteHandler}
+              onAdd={addFavoriteHandler}
+              addOnPaste={true}
               rightElement={
                 <>
                   <Tooltip content="Remove all">

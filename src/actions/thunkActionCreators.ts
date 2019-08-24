@@ -130,4 +130,29 @@ const removeUserFromFavorites = (user: Favorite) => (dispatch, getState) => {
   dispatch(setFavorites(favorites.filter(favorite => favorite.name !== user.name)));
 };
 
-export { searchUser, processLoadedRepos, changeSorting, loadRepositories, addUserToFavorites, removeUserFromFavorites };
+const addUserToFavoritesIfExists = (userName: string) => (dispatch, getState) => {
+  api
+    .getUser(userName)
+    .then(result => {
+      dispatch(addUserToFavorites({ name: result.login }));
+    })
+    .catch(error => {
+      if (error.message.includes('404')) {
+        showErrorToast(`User "${userName}" could not be found!`, IconNames.SEARCH);
+      } else if (error.message.includes('403')) {
+        showErrorToast(`Rate limit reached! Can't check whether user "${userName}" exists.`, IconNames.LOCK);
+      } else {
+        showErrorToast('An error occured while attempting to retrieve user info from Github.');
+      }
+    });
+};
+
+export {
+  searchUser,
+  processLoadedRepos,
+  changeSorting,
+  loadRepositories,
+  addUserToFavorites,
+  removeUserFromFavorites,
+  addUserToFavoritesIfExists,
+};
