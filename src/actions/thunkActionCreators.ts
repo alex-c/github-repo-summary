@@ -51,14 +51,14 @@ const searchUser = (userName: string) => dispatch => {
 const processLoadedRepos = (repositories: Repository[]) => dispatch => {
   const languages: Language[] = [];
   const starsStatistics: StarsStatistics = {
-    max_stars_repo: null,
+    max_stars_repo: repositories[0],
     total_stars: 0,
     average_stars: 0,
     median_stars: 0,
   };
 
   // Compute repositories stats
-  let maxStars = 0;
+  let maxStars = starsStatistics.max_stars_repo.stargazers_count;
   for (let repository of repositories) {
     // Find unique languages and count the number of repos for each
     const language = languages.find(language => language.name === repository.language);
