@@ -25,8 +25,13 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     &>div {
-      flex-grow: 1;
       margin: 4px 0px;
+      &:first-child {
+        flex-grow: 1;
+      }
+      &:last-child {
+        flex-grow: 1;
+      }
     }
   }
   #navbar-title {
