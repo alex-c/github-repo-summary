@@ -49,13 +49,14 @@ body {
 
 #favorites {
   margin-top: 16px;
-  padding: 4px;
+  padding: 4px 4px 0px;
   text-align: left;
   overflow: auto;
   border: 1px dashed #D0D0D0;
   border-radius: 3px;
   .bp3-tag {
     margin-right: 4px;
+    margin-bottom: 4px;
   }
   #favorites-controls {
     float: right;
