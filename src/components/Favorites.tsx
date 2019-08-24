@@ -4,7 +4,7 @@ import { IconNames } from '@blueprintjs/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../models/AppState';
 import { setFavorites } from '../actions/actionCreators';
-import { removeUserFromFavorites } from '../actions/thunkActionCreators';
+import { removeUserFromFavorites, searchUser } from '../actions/thunkActionCreators';
 
 function Favorites() {
   const favorites = useSelector((state: AppState) => state.favorites);
@@ -12,7 +12,7 @@ function Favorites() {
   const dispatch = useDispatch();
 
   const loadFavoriteHandler = (name: string) => () => {
-    console.log(`TODO: load favorite user ${name} from API!`);
+    dispatch(searchUser(name));
   };
 
   const toggleEditModeHandler = () => {
