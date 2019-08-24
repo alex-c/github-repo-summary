@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/github-repo-summary/static/css/main.47940a23.chunk.css",
-    "main.js": "/github-repo-summary/static/js/main.f085bf32.chunk.js",
-    "main.js.map": "/github-repo-summary/static/js/main.f085bf32.chunk.js.map",
+    "main.css": "/github-repo-summary/static/css/main.1f74c48a.chunk.css",
+    "main.js": "/github-repo-summary/static/js/main.d34cc1fc.chunk.js",
+    "main.js.map": "/github-repo-summary/static/js/main.d34cc1fc.chunk.js.map",
     "runtime~main.js": "/github-repo-summary/static/js/runtime~main.c387be30.js",
     "runtime~main.js.map": "/github-repo-summary/static/js/runtime~main.c387be30.js.map",
     "static/css/2.14852a02.chunk.css": "/github-repo-summary/static/css/2.14852a02.chunk.css",
-    "static/js/2.ce617c79.chunk.js": "/github-repo-summary/static/js/2.ce617c79.chunk.js",
-    "static/js/2.ce617c79.chunk.js.map": "/github-repo-summary/static/js/2.ce617c79.chunk.js.map",
+    "static/js/2.00d1c5ff.chunk.js": "/github-repo-summary/static/js/2.00d1c5ff.chunk.js",
+    "static/js/2.00d1c5ff.chunk.js.map": "/github-repo-summary/static/js/2.00d1c5ff.chunk.js.map",
     "index.html": "/github-repo-summary/index.html",
-    "precache-manifest.b354e82bb698b9ed0c92ebf24280b74e.js": "/github-repo-summary/precache-manifest.b354e82bb698b9ed0c92ebf24280b74e.js",
+    "precache-manifest.d6bc943e9942c520bc00aa6cfa5cd96f.js": "/github-repo-summary/precache-manifest.d6bc943e9942c520bc00aa6cfa5cd96f.js",
     "service-worker.js": "/github-repo-summary/service-worker.js",
     "static/css/2.14852a02.chunk.css.map": "/github-repo-summary/static/css/2.14852a02.chunk.css.map",
-    "static/css/main.47940a23.chunk.css.map": "/github-repo-summary/static/css/main.47940a23.chunk.css.map"
+    "static/css/main.1f74c48a.chunk.css.map": "/github-repo-summary/static/css/main.1f74c48a.chunk.css.map"
   }
 }
