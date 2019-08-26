@@ -54,7 +54,7 @@ body {
   overflow: auto;
   border: 1px dashed #D0D0D0;
   border-radius: 3px;
-  .bp3-tag {
+  &>.bp3-tag {
     margin-right: 4px;
     margin-bottom: 4px;
   }
@@ -63,6 +63,9 @@ body {
     &:hover {
       cursor: pointer;
     }
+  }
+  .bp3-tag-input {
+    margin-bottom: 4px;
   }
 }
 
