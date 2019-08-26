@@ -1,5 +1,4 @@
 import React from 'react';
-import { RadialChart, DiscreteColorLegend } from 'react-vis';
 import { Card, Elevation, Callout, Intent } from '@blueprintjs/core';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { IconNames } from '@blueprintjs/icons';
@@ -19,7 +18,8 @@ function RepositoriesSummary(props: RepositoriesSummaryProps) {
         {languageStatistics.repository_count} repositories.
       </Callout>
       <div className="flex-card-section">
-        <RadialChart
+        TODO: new chart!
+        {/* <RadialChart
           data={languageStatistics.languages
             .map(language => {
               return { angle: language.count, label: language.name };
@@ -29,14 +29,7 @@ function RepositoriesSummary(props: RepositoriesSummaryProps) {
           colorDomain={[0, 1, 2]}
           width={300}
           height={300}
-        />
-        <DiscreteColorLegend
-          orientation="horizontal"
-          items={languageStatistics.languages.map(language => {
-            return { title: `${language.name}: ${language.count}` };
-          })}
-          width={150}
-        />
+        /> */}
         <div>
           <p>
             Max stars:&nbsp;
