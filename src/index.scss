@@ -11,6 +11,12 @@ body {
   background-color: #EFEFEF;
 }
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .viewport {
   max-width: 960px;
   margin: auto;
@@ -81,9 +87,7 @@ main.viewport .bp3-card {
   &>div {
     flex-grow: 1;
     min-width: 300px;
-    &:first-child {
-      max-width: 400px;
-    }
+    margin-bottom: 4px;
     &:last-child {
       margin-left: 8px;
     }
@@ -124,7 +128,6 @@ main.viewport .bp3-card {
 #repository-list {
   margin-bottom: 42px;
   #repository-list-header {
-    overflow: auto;
     #repository-list-title {
       font-size: 1.8em;
       font-weight: 600;

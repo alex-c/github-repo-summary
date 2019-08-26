@@ -21,16 +21,26 @@ function RepositoriesSummary(props: RepositoriesSummaryProps) {
           </Callout>
           <ReactApexChart
             type="pie"
-            width="100%"
+            width="500"
             options={{
               labels: languageStatistics.languages.map(language => language.name),
-              legend: { position: 'bottom' },
               plotOptions: {
                 pie: {
                   expandOnClick: false,
                 },
               },
               responsive: [
+                {
+                  breakpoint: 500,
+                  options: {
+                    chart: {
+                      width: 400,
+                    },
+                    legend: {
+                      position: 'bottom',
+                    },
+                  },
+                },
                 {
                   breakpoint: 400,
                   options: {
