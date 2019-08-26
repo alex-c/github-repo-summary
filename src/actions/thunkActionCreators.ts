@@ -1,7 +1,15 @@
 import { Sorting } from '../constants/Sorting';
 import sortRepositories from './helpers/sortRepositories';
 import { Repository } from '../models/Repository';
-import { setRepositories, setSorting, setLoadingState, setFavorites, setUser, setStatistics } from './actionCreators';
+import {
+  setRepositories,
+  setSorting,
+  setLoadingState,
+  setFavorites,
+  setUser,
+  setStatistics,
+  setPagination,
+} from './actionCreators';
 import { Favorite } from '../models/Favorite';
 import api from '../services/api';
 import { Language } from '../models/Language';
@@ -110,9 +118,16 @@ const changeSorting = (sorting: Sorting) => (dispatch, getState) => {
 };
 
 const loadRepositories = (repositories: Repository[]) => (dispatch, getState) => {
-  const { sorting } = getState();
+  const { sorting, pagination } = getState();
   const sortedRepositories = sortRepositories(repositories, sorting);
   dispatch(setRepositories(sortedRepositories));
+  dispatch(
+    setPagination({
+      items_per_page: pagination.items_per_page,
+      pages: Math.ceil(repositories.length / pagination.items_per_page),
+      current_page: 1,
+    }),
+  );
   dispatch(setLoadingState(false));
 };
 

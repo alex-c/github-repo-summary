@@ -30,6 +30,11 @@ const initialState = {
   stars_statistics: null,
   repositories: [],
   sorting: Sorting.Alphabetical,
+  pagination: {
+    items_per_page: 25,
+    pages: 1,
+    current_page: 1,
+  },
 };
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 

@@ -6,6 +6,7 @@ import {
   SetSortingAction,
   SetLoadingStateAction,
   SetFavoritesAction,
+  SetPaginationAction,
 } from './actions';
 
 export type ActionTypes =
@@ -15,4 +16,5 @@ export type ActionTypes =
   | SetSortingAction
   | SetLoadingStateAction
   | SetFavoritesAction
+  | SetPaginationAction
   | OtherAction;

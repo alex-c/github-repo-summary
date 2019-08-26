@@ -4,11 +4,11 @@ import { Tooltip, Position } from '@blueprintjs/core';
 import IconItem from '../IconItem';
 import { Repository } from '../../models/Repository';
 
-interface RepositoryView {
+interface RepositoryViewProps {
   repository: Repository;
 }
 
-function RepositoryView(props: RepositoryView) {
+function RepositoryView(props: RepositoryViewProps) {
   const { repository } = props;
   return (
     <div className="repository">
