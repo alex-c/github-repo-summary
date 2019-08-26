@@ -30,10 +30,16 @@ function RepositoryList(props: RepositoryListProps) {
   return (
     repositories.length > 0 && (
       <Card id="repository-list" elevation={Elevation.TWO}>
-        <div id="repository-list-header">
+        <div id="repository-list-header" className="clearfix">
+          <span id="repository-list-title">Repositories</span>
           <div id="repository-list-controls">
             <ButtonGroup>
-              <Popover content={<SortingOptions handler={changeSortingHandler} />} position={Position.BOTTOM}>
+              <Popover
+                content={<SortingOptions handler={changeSortingHandler} />}
+                position={Position.BOTTOM}
+                usePortal={true}
+                portalContainer={document.body}
+              >
                 <Button
                   text={'Sorting: ' + sortingDisplayText(sorting)}
                   icon={sortingIconName(sorting)}
@@ -47,7 +53,6 @@ function RepositoryList(props: RepositoryListProps) {
               />
             </ButtonGroup>
           </div>
-          <h2>Repositories</h2>
         </div>
         {viewMode === 'tiles' ? (
           <div id="repository-list-cards-container">

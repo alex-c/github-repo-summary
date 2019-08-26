@@ -36,7 +36,7 @@ function UserSummary(props: UserSummaryProps) {
       </div>
       <p>
         <b>{user.name}</b> /&nbsp;
-        <a href={user.htmlUrl} target="_blank" rel="noopener noreferrer">
+        <a href={user.html_url} target="_blank" rel="noopener noreferrer">
           {user.login}
         </a>
       </p>
