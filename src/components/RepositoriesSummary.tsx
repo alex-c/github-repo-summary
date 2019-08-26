@@ -17,7 +17,7 @@ function RepositoriesSummary(props: RepositoriesSummaryProps) {
       <div className="flex-card-section">
         <div>
           <Callout intent={Intent.PRIMARY} icon={IconNames.CODE}>
-            {languageStatistics.language_count} languages used in {languageStatistics.repository_count} repositories.
+            {languageStatistics.language_count} languages used over {languageStatistics.repository_count} repositories.
           </Callout>
           <ReactApexChart
             type="pie"
