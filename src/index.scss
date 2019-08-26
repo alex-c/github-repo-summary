@@ -77,9 +77,19 @@ main.viewport .bp3-card {
 .flex-card-section {
   display: flex;
   flex-wrap: wrap;
-  padding: 12px;
-  div {
+  justify-content: space-between;
+  &>div {
     flex-grow: 1;
+    min-width: 300px;
+    &:first-child {
+      max-width: 400px;
+    }
+    &:last-child {
+      margin-left: 8px;
+    }
+  }
+  .padded-content {
+    padding: 8px;
   }
 }
 
@@ -113,8 +123,15 @@ main.viewport .bp3-card {
 
 #repository-list {
   margin-bottom: 42px;
-  #repository-list-controls {
-    float: right;
+  #repository-list-header {
+    overflow: auto;
+    #repository-list-title {
+      font-size: 1.8em;
+      font-weight: 600;
+    }
+    #repository-list-controls {
+      float: right;
+    }
   }
   #repository-list-cards-container {
     display: flex;

@@ -31,6 +31,7 @@ function RepositoryList(props: RepositoryListProps) {
     repositories.length > 0 && (
       <Card id="repository-list" elevation={Elevation.TWO}>
         <div id="repository-list-header">
+          <span id="repository-list-title">Repositories</span>
           <div id="repository-list-controls">
             <ButtonGroup>
               <Popover content={<SortingOptions handler={changeSortingHandler} />} position={Position.BOTTOM}>
@@ -47,7 +48,6 @@ function RepositoryList(props: RepositoryListProps) {
               />
             </ButtonGroup>
           </div>
-          <h2>Repositories</h2>
         </div>
         {viewMode === 'tiles' ? (
           <div id="repository-list-cards-container">
