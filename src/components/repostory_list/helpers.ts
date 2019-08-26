@@ -1,7 +1,9 @@
 import { Sorting } from '../../constants/Sorting';
 import { IconNames, IconName } from '@blueprintjs/icons';
+import { Repository } from '../../models/Repository';
+import { Pagination } from '../../models/Pagination';
 
-const sortingDisplayText = (sorting: Sorting) => {
+const sortingDisplayText = (sorting: Sorting): string => {
   let text: string;
   switch (sorting) {
     case Sorting.Alphabetical:
@@ -20,7 +22,7 @@ const sortingDisplayText = (sorting: Sorting) => {
   return text;
 };
 
-const sortingIconName = (sorting: Sorting) => {
+const sortingIconName = (sorting: Sorting): IconName => {
   let icon: IconName;
   switch (sorting) {
     case Sorting.Alphabetical:
@@ -39,4 +41,10 @@ const sortingIconName = (sorting: Sorting) => {
   return icon;
 };
 
-export { sortingDisplayText, sortingIconName };
+const paginateRepositories = (repositories: Repository[], pagination: Pagination): Repository[] => {
+  const { items_per_page, current_page } = pagination;
+  const pageLimit = items_per_page * current_page;
+  return repositories.slice(pageLimit - items_per_page, pageLimit);
+};
+
+export { sortingDisplayText, sortingIconName, paginateRepositories };

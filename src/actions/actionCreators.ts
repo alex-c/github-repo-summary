@@ -14,7 +14,7 @@ import { Sorting } from '../constants/Sorting';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
 import { Favorite } from '../models/Favorite';
-import { Paginaton } from '../models/Pagination';
+import { Pagination } from '../models/Pagination';
 
 const setUser = (user: User): SetUserAction => {
   return {
@@ -62,7 +62,7 @@ const setFavorites = (favorites: Favorite[]): SetFavoritesAction => {
   };
 };
 
-const setPagination = (pagination: Paginaton): SetPaginationAction => {
+const setPagination = (pagination: Pagination): SetPaginationAction => {
   return {
     type: ActionTypeKeys.SET_PAGINATION,
     pagination,

@@ -5,7 +5,7 @@ import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
 import { Sorting } from '../../constants/Sorting';
 import { changeSorting } from '../../actions/thunkActionCreators';
-import { sortingDisplayText, sortingIconName } from './helpers';
+import { sortingDisplayText, sortingIconName, paginateRepositories } from './helpers';
 import SortingOptions from './SortingOptions';
 import RepositoryView from './RepositoryView';
 import PaginationControls from './PaginationControls';
@@ -29,6 +29,8 @@ function RepositoryList(props: RepositoryListProps) {
   const changeSortingHandler = (sorting: Sorting) => () => {
     dispatch(changeSorting(sorting));
   };
+
+  const paginatedRepositories = paginateRepositories(repositories, pagination);
 
   return (
     repositories.length > 0 && (
@@ -59,7 +61,7 @@ function RepositoryList(props: RepositoryListProps) {
         </div>
         {viewMode === 'tiles' ? (
           <div id="repository-list-cards-container">
-            {repositories.map((repository, index) => (
+            {paginatedRepositories.map((repository, index) => (
               <RepositoryView repository={repository} key={index} />
             ))}
           </div>
@@ -78,7 +80,7 @@ function RepositoryList(props: RepositoryListProps) {
                 </tr>
               </thead>
               <tbody>
-                {repositories.map((repository, index) => (
+                {paginatedRepositories.map((repository, index) => (
                   <tr key={index}>
                     <td>
                       <a href={repository.html_url} target="_blank" rel="noopener noreferrer">
