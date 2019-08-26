@@ -6,6 +6,7 @@ import {
   SetStatisticsAction,
   SetLoadingStateAction,
   SetFavoritesAction,
+  SetPaginationAction,
 } from './actions';
 import { ActionTypeKeys } from './actionTypeKeys';
 import { Repository } from '../models/Repository';
@@ -13,6 +14,7 @@ import { Sorting } from '../constants/Sorting';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
 import { Favorite } from '../models/Favorite';
+import { Paginaton } from '../models/Pagination';
 
 const setUser = (user: User): SetUserAction => {
   return {
@@ -60,4 +62,11 @@ const setFavorites = (favorites: Favorite[]): SetFavoritesAction => {
   };
 };
 
-export { setUser, setRepositories, setStatistics, setSorting, setLoadingState, setFavorites };
+const setPagination = (pagination: Paginaton): SetPaginationAction => {
+  return {
+    type: ActionTypeKeys.SET_PAGINATION,
+    pagination,
+  };
+};
+
+export { setUser, setRepositories, setStatistics, setSorting, setLoadingState, setFavorites, setPagination };

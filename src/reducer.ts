@@ -14,7 +14,7 @@ const initialState: AppState = {
     blog: '',
     email: '',
     avatar_url: '',
-    htmlUrl: '',
+    html_url: '',
     public_repos: 0,
     public_gists: 0,
     followers: 0,
@@ -27,6 +27,11 @@ const initialState: AppState = {
   stars_statistics: null,
   repositories: [],
   sorting: Sorting.Alphabetical,
+  pagination: {
+    items_per_page: 25,
+    pages: 1,
+    current_page: 0,
+  },
 };
 
 export default function reducer(state: AppState = initialState, action: ActionTypes) {
@@ -62,6 +67,11 @@ export default function reducer(state: AppState = initialState, action: ActionTy
       return {
         ...state,
         favorites: action.favorites,
+      };
+    case ActionTypeKeys.SET_PAGINATION:
+      return {
+        ...state,
+        pagination: action.pagination,
       };
     default:
       return state;

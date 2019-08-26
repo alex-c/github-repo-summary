@@ -2,8 +2,9 @@ import { User } from './User';
 import { Repository } from './Repository';
 import { LanguageStatistics } from './LanguageStatistics';
 import { StarsStatistics } from './StarsStatistics';
-import { Sorting } from '../constants/Sorting';
 import { Favorite } from './Favorite';
+import { Paginaton } from './Pagination';
+import { Sorting } from '../constants/Sorting';
 
 export type AppState = {
   user: User,
@@ -13,4 +14,5 @@ export type AppState = {
   stars_statistics: StarsStatistics,
   repositories: Repository[],
   sorting: Sorting,
+  pagination: Paginaton,
 };

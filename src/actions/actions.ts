@@ -3,8 +3,9 @@ import { User } from '../models/User';
 import { Repository } from '../models/Repository';
 import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
-import { Sorting } from '../constants/Sorting';
 import { Favorite } from '../models/Favorite';
+import { Paginaton } from '../models/Pagination';
+import { Sorting } from '../constants/Sorting';
 
 export interface SetUserAction {
   type: ActionTypeKeys.SET_USER;
@@ -35,6 +36,11 @@ export interface SetLoadingStateAction {
 export interface SetFavoritesAction {
   type: ActionTypeKeys.SET_FAVORITES;
   favorites: Favorite[];
+}
+
+export interface SetPaginationAction {
+  type: ActionTypeKeys.SET_PAGINATION;
+  pagination: Paginaton;
 }
 
 export interface OtherAction {
