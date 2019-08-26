@@ -9,11 +9,12 @@ import { IconNames } from '@blueprintjs/icons';
 
 function Summary() {
   const user = useSelector((state: AppState) => state.user);
-  const repositories = useSelector((state: AppState) => state.repositories);
-  const sorting = useSelector((state: AppState) => state.sorting);
+  const loading_state = useSelector((state: AppState) => state.loading_state);
   const languageStatistics = useSelector((state: AppState) => state.language_statistics);
   const starsStatistics = useSelector((state: AppState) => state.stars_statistics);
-  const loading_state = useSelector((state: AppState) => state.loading_state);
+  const repositories = useSelector((state: AppState) => state.repositories);
+  const sorting = useSelector((state: AppState) => state.sorting);
+  const pagination = useSelector((state: AppState) => state.pagination);
   return user.login !== '' ? (
     <>
       <UserSummary user={user} />
@@ -26,7 +27,7 @@ function Summary() {
           {repositories.length !== 0 ? (
             <div>
               <RepositoriesSummary languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
-              <RepositoryList repositories={repositories} sorting={sorting} />
+              <RepositoryList repositories={repositories} sorting={sorting} pagination={pagination} />
             </div>
           ) : (
             <NonIdealState

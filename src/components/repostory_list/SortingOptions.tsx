@@ -3,11 +3,11 @@ import { Sorting } from '../../constants/Sorting';
 import { Menu } from '@blueprintjs/core';
 import SortingOption from './SortingOption';
 
-interface SortingOptionProps {
+interface SortingOptionsProps {
   handler: Function;
 }
 
-function SortingOptions(props: SortingOptionProps) {
+function SortingOptions(props: SortingOptionsProps) {
   const { handler } = props;
   return (
     <Menu>

@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { Card, Elevation, Button, HTMLTable, ButtonGroup, Popover, Position } from '@blueprintjs/core';
 import { Repository } from '../../models/Repository';
-import RepositoryView from './RepositoryView';
 import { IconNames } from '@blueprintjs/icons';
 import { useDispatch } from 'react-redux';
 import { Sorting } from '../../constants/Sorting';
 import { changeSorting } from '../../actions/thunkActionCreators';
 import { sortingDisplayText, sortingIconName } from './helpers';
 import SortingOptions from './SortingOptions';
+import RepositoryView from './RepositoryView';
+import PaginationControls from './PaginationControls';
+import { Pagination } from '../../models/Pagination';
 
 interface RepositoryListProps {
   repositories: Repository[];
   sorting: Sorting;
+  pagination: Pagination;
 }
 
 function RepositoryList(props: RepositoryListProps) {
-  const { repositories, sorting } = props;
+  const { repositories, sorting, pagination } = props;
   const dispatch = useDispatch();
   const [viewMode, setViewMode] = useState('tiles');
 
@@ -94,6 +97,7 @@ function RepositoryList(props: RepositoryListProps) {
             </HTMLTable>
           </div>
         )}
+        <PaginationControls pagination={pagination}></PaginationControls>
       </Card>
     )
   );
