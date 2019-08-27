@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppState } from '../models/AppState';
-import UserSummary from './UserSummary';
-import RepositoriesSummary from './RepositoriesSummary';
+import UserProfile from './UserProfile';
+import Statistics from './Statistics';
 import RepositoryList from './repostory_list/RepositoryList';
 import { NonIdealState, Card, Elevation, Spinner, Intent } from '@blueprintjs/core';
 import { IconNames } from '@blueprintjs/icons';
@@ -17,7 +17,7 @@ function Summary() {
   const pagination = useSelector((state: AppState) => state.pagination);
   return user.login !== '' ? (
     <>
-      <UserSummary user={user} />
+      <UserProfile user={user} />
       {loading_state ? (
         <Card elevation={Elevation.TWO}>
           <Spinner intent={Intent.PRIMARY} />
@@ -26,7 +26,7 @@ function Summary() {
         <>
           {repositories.length !== 0 ? (
             <div>
-              <RepositoriesSummary languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
+              <Statistics languageStatistics={languageStatistics} starsStatistics={starsStatistics} />
               <RepositoryList repositories={repositories} sorting={sorting} pagination={pagination} />
             </div>
           ) : (

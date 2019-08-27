@@ -7,11 +7,11 @@ import { addUserToFavorites, removeUserFromFavorites } from '../actions/thunkAct
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../models/AppState';
 
-interface UserSummaryProps {
+interface UserProfileProps {
   user: User;
 }
 
-function UserSummary(props: UserSummaryProps) {
+function UserProfile(props: UserProfileProps) {
   const favorites = useSelector((state: AppState) => state.favorites);
   const { user } = props;
   const dispatch = useDispatch();
@@ -57,4 +57,4 @@ function UserSummary(props: UserSummaryProps) {
   );
 }
 
-export default UserSummary;
+export default UserProfile;

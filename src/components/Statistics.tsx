@@ -5,12 +5,12 @@ import { LanguageStatistics } from '../models/LanguageStatistics';
 import { StarsStatistics } from '../models/StarsStatistics';
 import { IconNames } from '@blueprintjs/icons';
 
-interface RepositoriesSummaryProps {
+interface StatisticsProps {
   languageStatistics: LanguageStatistics;
   starsStatistics: StarsStatistics;
 }
 
-function RepositoriesSummary(props: RepositoriesSummaryProps) {
+function Statistics(props: StatisticsProps) {
   let { languageStatistics, starsStatistics } = props;
   return (
     <Card id="repositories-summary" elevation={Elevation.TWO}>
@@ -78,4 +78,4 @@ function RepositoriesSummary(props: RepositoriesSummaryProps) {
   );
 }
 
-export default RepositoriesSummary;
+export default Statistics;
