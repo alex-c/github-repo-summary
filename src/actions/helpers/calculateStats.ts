@@ -6,7 +6,7 @@ const calculateMeanStars = (stars: number, repoCount: number) => roundStarsStat(
 
 const calculateMedianStars = (repositories: Repository[]) => {
   const sortedRepos = repositories.slice().sort((r1, r2) => r2.stargazers_count - r1.stargazers_count);
-  const repoMedian = sortedRepos.length / 2;
+  const repoMedian = sortedRepos.length === 1 ? 0 : sortedRepos.length / 2;
   if (sortedRepos.length % 2 === 1) {
     return roundStarsStat(
       (sortedRepos[Math.floor(repoMedian)].stargazers_count + sortedRepos[Math.ceil(repoMedian)].stargazers_count) / 2,
